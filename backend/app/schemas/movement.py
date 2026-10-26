@@ -15,63 +15,75 @@ class MovementType(StrEnum):
 
 class MovementBase(BaseModel):
     item_id: int
-    quantity: float = Field(..., gt=0.0, description="Movement quantity must be positive")
+    quantity: float = Field(
+        ...,
+        gt=0.0,
+        le=10_000_000.0,
+        allow_inf_nan=False,
+        description="Movement quantity must be positive and bounded",
+    )
     reference_type: str | None = Field(None, max_length=100)
     reference_id: str | None = Field(None, max_length=100)
-    reason: str | None = None
+    reason: str | None = Field(None, max_length=1000)
     recipient_project: str | None = Field(None, max_length=255)
     idempotency_key: str | None = Field(None, max_length=128)
 
 
 class ReceiptCreate(BaseModel):
     item_id: int
-    quantity: float = Field(..., gt=0.0)
+    quantity: float = Field(..., gt=0.0, le=10_000_000.0, allow_inf_nan=False)
     supplier_id: int | None = None
-    reference_type: str | None = "purchase_order"
-    reference_id: str | None = None
-    reason: str | None = None
-    idempotency_key: str | None = None
+    reference_type: str | None = Field("purchase_order", max_length=100)
+    reference_id: str | None = Field(None, max_length=100)
+    reason: str | None = Field(None, max_length=1000)
+    idempotency_key: str | None = Field(None, max_length=128)
 
 
 class IssueCreate(BaseModel):
     item_id: int
-    quantity: float = Field(..., gt=0.0)
+    quantity: float = Field(..., gt=0.0, le=10_000_000.0, allow_inf_nan=False)
     recipient_project: str = Field(
         ..., min_length=2, max_length=255, description="Person, student ID, project or lab course"
     )
-    reference_type: str | None = "lab_work"
-    reference_id: str | None = None
-    reason: str | None = None
-    idempotency_key: str | None = None
+    reference_type: str | None = Field("lab_work", max_length=100)
+    reference_id: str | None = Field(None, max_length=100)
+    reason: str | None = Field(None, max_length=1000)
+    idempotency_key: str | None = Field(None, max_length=128)
 
 
 class ReturnCreate(BaseModel):
     item_id: int
-    quantity: float = Field(..., gt=0.0)
-    recipient_project: str | None = None
-    reason: str | None = "Returned unused/working component"
-    idempotency_key: str | None = None
+    quantity: float = Field(..., gt=0.0, le=10_000_000.0, allow_inf_nan=False)
+    recipient_project: str | None = Field(None, max_length=255)
+    reason: str | None = Field("Returned unused/working component", max_length=1000)
+    idempotency_key: str | None = Field(None, max_length=128)
 
 
 class DamageCreate(BaseModel):
     item_id: int
-    quantity: float = Field(..., gt=0.0)
-    reason: str = Field(..., min_length=3, description="Mandatory failure/damage explanation")
-    reference_id: str | None = None
-    idempotency_key: str | None = None
+    quantity: float = Field(..., gt=0.0, le=10_000_000.0, allow_inf_nan=False)
+    reason: str = Field(
+        ..., min_length=3, max_length=1000, description="Mandatory failure/damage explanation"
+    )
+    reference_id: str | None = Field(None, max_length=100)
+    idempotency_key: str | None = Field(None, max_length=128)
 
 
 class AdjustmentCreate(BaseModel):
     item_id: int
-    quantity: float = Field(..., gt=0.0)
+    quantity: float = Field(..., gt=0.0, le=10_000_000.0, allow_inf_nan=False)
     direction: str = Field(..., pattern="^(INCREASE|DECREASE)$")
-    reason: str = Field(..., min_length=5, description="Mandatory reason for audit reconciliation")
-    idempotency_key: str | None = None
+    reason: str = Field(
+        ..., min_length=5, max_length=1000, description="Mandatory reason for audit reconciliation"
+    )
+    idempotency_key: str | None = Field(None, max_length=128)
 
 
 class ReversalCreate(BaseModel):
-    reason: str = Field(..., min_length=5, description="Mandatory reason for movement reversal")
-    idempotency_key: str | None = None
+    reason: str = Field(
+        ..., min_length=5, max_length=1000, description="Mandatory reason for movement reversal"
+    )
+    idempotency_key: str | None = Field(None, max_length=128)
 
 
 class MovementOut(BaseModel):

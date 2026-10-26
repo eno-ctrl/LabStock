@@ -3,7 +3,7 @@ import io
 from datetime import datetime
 from typing import Any
 
-from sqlalchemy import func
+from sqlalchemy import case, func
 from sqlalchemy.orm import Session, joinedload
 
 from backend.app.models.balance import StockBalance
@@ -13,11 +13,18 @@ from backend.app.schemas.movement import MovementType
 
 
 def sanitize_csv_cell(value: Any) -> str:
-    """Mitigates spreadsheet formula injection by escaping trigger characters."""
+    """Mitigates spreadsheet formula injection by escaping trigger characters including whitespace bypasses."""
     if value is None:
         return ""
     text = str(value)
-    if text and text[0] in ("=", "+", "-", "@", "\t", "\r"):
+    if not text:
+        return ""
+    # Raw check for dangerous formula triggers or invisible control characters
+    if text[0] in ("=", "+", "-", "@", "\t", "\r", "%", "|"):
+        return f"'{text}"
+    # Whitespace-bypass check (e.g. leading spaces hiding '=calc')
+    stripped = text.lstrip(" \t\r\n")
+    if stripped and stripped[0] in ("=", "+", "-", "@", "%", "|"):
         return f"'{text}"
     return text
 
@@ -162,43 +169,67 @@ class ReportService:
     def get_consumption_report(
         self, start_date: datetime | None = None, end_date: datetime | None = None
     ) -> list[dict[str, Any]]:
-        """Calculates consumption by item: gross issues, accepted returns, and true net consumption."""
-        items = self.db.query(Item).filter(Item.is_active.is_(True)).order_by(Item.name.asc()).all()
+        """Calculates consumption by item: gross issues, accepted returns, and true net consumption using a single aggregate query."""
+        movement_filters = []
+        if start_date:
+            movement_filters.append(StockMovement.timestamp >= start_date)
+        if end_date:
+            movement_filters.append(StockMovement.timestamp <= end_date)
+
+        results = (
+            self.db.query(
+                Item.sku,
+                Item.name,
+                Item.category,
+                Item.unit,
+                func.coalesce(
+                    func.sum(
+                        case(
+                            (
+                                StockMovement.movement_type == MovementType.ISSUE.value,
+                                StockMovement.quantity,
+                            ),
+                            else_=0.0,
+                        )
+                    ),
+                    0.0,
+                ).label("gross_issues"),
+                func.coalesce(
+                    func.sum(
+                        case(
+                            (
+                                StockMovement.movement_type == MovementType.RETURN.value,
+                                StockMovement.quantity,
+                            ),
+                            else_=0.0,
+                        )
+                    ),
+                    0.0,
+                ).label("returns"),
+            )
+            .join(StockMovement, StockMovement.item_id == Item.id)
+            .filter(Item.is_active.is_(True), *movement_filters)
+            .group_by(Item.id, Item.sku, Item.name, Item.category, Item.unit)
+            .order_by(Item.name.asc())
+            .limit(1000)
+            .all()
+        )
 
         rows = []
-        for it in items:
-            q_base = self.db.query(StockMovement).filter(StockMovement.item_id == it.id)
-            if start_date:
-                q_base = q_base.filter(StockMovement.timestamp >= start_date)
-            if end_date:
-                q_base = q_base.filter(StockMovement.timestamp <= end_date)
-
-            gross_issues = (
-                q_base.filter(StockMovement.movement_type == MovementType.ISSUE.value)
-                .with_entities(func.coalesce(func.sum(StockMovement.quantity), 0.0))
-                .scalar()
-                or 0.0
-            )
-
-            returns = (
-                q_base.filter(StockMovement.movement_type == MovementType.RETURN.value)
-                .with_entities(func.coalesce(func.sum(StockMovement.quantity), 0.0))
-                .scalar()
-                or 0.0
-            )
-
-            net_consumption = max(0.0, round(float(gross_issues) - float(returns), 2))
-
-            if gross_issues > 0 or returns > 0:
+        for sku, name, category, unit, gross_issues, returns in results:
+            g_val = float(gross_issues or 0.0)
+            r_val = float(returns or 0.0)
+            net = max(0.0, round(g_val - r_val, 2))
+            if g_val > 0 or r_val > 0:
                 rows.append(
                     {
-                        "SKU": it.sku,
-                        "Item Name": it.name,
-                        "Category": it.category,
-                        "Unit": it.unit,
-                        "Gross Issued": round(float(gross_issues), 2),
-                        "Returned": round(float(returns), 2),
-                        "Net Consumption": net_consumption,
+                        "SKU": sku,
+                        "Item Name": name,
+                        "Category": category,
+                        "Unit": unit,
+                        "Gross Issued": round(g_val, 2),
+                        "Returned": round(r_val, 2),
+                        "Net Consumption": net,
                     }
                 )
         return rows

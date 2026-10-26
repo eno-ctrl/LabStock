@@ -69,6 +69,11 @@ class ProcurementService:
             raise PurchaseRequestStateConflictException(
                 f"Cannot approve request with status '{pr.status}'. Only 'submitted' requests can be approved."
             )
+        if pr.requester_id == approver_id:
+            raise ConflictException(
+                code="SELF_APPROVAL_DISALLOWED",
+                message="Segregation of Duties: A requester cannot approve their own purchase request.",
+            )
         updated = self.pr_repo.update_status(
             pr, PurchaseRequestStatus.APPROVED, approver_id=approver_id
         )

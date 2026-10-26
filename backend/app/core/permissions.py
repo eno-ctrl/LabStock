@@ -8,7 +8,7 @@ from backend.app.core.exceptions import (
     PermissionDeniedException,
     UserInactiveException,
 )
-from backend.app.core.security import decode_access_token
+from backend.app.core.security import decode_access_token, is_token_revoked
 from backend.app.db.session import get_db
 from backend.app.models.user import User
 from backend.app.schemas.user import UserRole
@@ -24,7 +24,15 @@ def get_current_user(
     db: Session = Depends(get_db),
 ) -> User:
     """Validate bearer JWT token and retrieve active database user."""
+    # Check if token is blacklisted / revoked
+    if is_token_revoked(token):
+        raise AuthenticationFailedException("Session token has been revoked")
+
     payload = decode_access_token(token)
+    jti = payload.get("jti")
+    if jti and is_token_revoked(jti):
+        raise AuthenticationFailedException("Session token has been revoked")
+
     user_id = payload.get("uid")
     if not user_id:
         raise AuthenticationFailedException("Token payload missing user identifier")
@@ -37,6 +45,20 @@ def get_current_user(
         raise UserInactiveException(
             "Account has been deactivated. Please contact an Administrator."
         )
+
+    # Invalidate tokens issued prior to a password change or session bump
+    token_ver = payload.get("ver")
+    if token_ver is not None and token_ver < (user.token_version or 1):
+        raise AuthenticationFailedException(
+            "Session invalidated by password update. Please log in again."
+        )
+
+    if user.password_changed_at:
+        iat = payload.get("iat")
+        if iat and iat < int(user.password_changed_at.timestamp()):
+            raise AuthenticationFailedException(
+                "Session invalidated by password update. Please log in again."
+            )
 
     return user
 

@@ -25,11 +25,14 @@ async def lifespan(app: FastAPI):
     logger.info("Shutting down LabStock backend engine.")
 
 
+is_prod = settings.ENVIRONMENT.lower() == "production"
+
 app = FastAPI(
     title=settings.PROJECT_NAME,
     version="1.0.0",
-    docs_url="/docs",
-    redoc_url="/redoc",
+    docs_url=None if is_prod else "/docs",
+    redoc_url=None if is_prod else "/redoc",
+    openapi_url=None if is_prod else "/openapi.json",
     lifespan=lifespan,
 )
 
@@ -43,7 +46,7 @@ app.add_middleware(
 )
 
 
-# Correlation ID and Performance Middleware
+# Correlation ID, Performance & Security Headers Middleware
 @app.middleware("http")
 async def correlation_and_timing_middleware(request: Request, call_next):
     correlation_id = request.headers.get("X-Correlation-ID", str(uuid.uuid4()))
@@ -53,8 +56,16 @@ async def correlation_and_timing_middleware(request: Request, call_next):
     response = await call_next(request)
     process_time = time.time() - start_time
 
+    # Diagnostic & Correlation Headers
     response.headers["X-Correlation-ID"] = correlation_id
     response.headers["X-Process-Time"] = f"{process_time:.4f}s"
+
+    # OWASP Defense-in-Depth Security Headers
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-Frame-Options"] = "DENY"
+    response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+    response.headers["Permissions-Policy"] = "geolocation=(), camera=(), microphone=()"
+
     return response
 
 

@@ -19,9 +19,9 @@ class PurchaseRequestStatus(StrEnum):
 
 class PurchaseRequestLineCreate(BaseModel):
     item_id: int
-    requested_quantity: float = Field(..., gt=0.0)
-    unit_cost: float | None = Field(None, ge=0.0)
-    notes: str | None = None
+    requested_quantity: float = Field(..., gt=0.0, le=10_000_000.0, allow_inf_nan=False)
+    unit_cost: float | None = Field(None, ge=0.0, le=1_000_000_000.0, allow_inf_nan=False)
+    notes: str | None = Field(None, max_length=2000)
 
 
 class PurchaseRequestLineOut(BaseModel):
@@ -41,25 +41,25 @@ class PurchaseRequestLineOut(BaseModel):
 
 class PurchaseRequestCreate(BaseModel):
     supplier_id: int | None = None
-    notes: str | None = None
+    notes: str | None = Field(None, max_length=2000)
     lines: list[PurchaseRequestLineCreate] = Field(..., min_length=1)
 
 
 class PurchaseRequestUpdate(BaseModel):
     supplier_id: int | None = None
-    notes: str | None = None
+    notes: str | None = Field(None, max_length=2000)
     lines: list[PurchaseRequestLineCreate] | None = None
 
 
 class ReceiveLineItem(BaseModel):
     line_id: int
-    quantity_to_receive: float = Field(..., gt=0.0)
+    quantity_to_receive: float = Field(..., gt=0.0, le=10_000_000.0, allow_inf_nan=False)
 
 
 class ReceivePurchaseRequestPayload(BaseModel):
     items: list[ReceiveLineItem] = Field(..., min_length=1)
-    reference: str | None = None
-    idempotency_key: str | None = None
+    reference: str | None = Field(None, max_length=100)
+    idempotency_key: str | None = Field(None, max_length=128)
 
 
 class PurchaseRequestOut(BaseModel):

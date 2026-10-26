@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from sqlalchemy import Boolean, DateTime, String
+from sqlalchemy import Boolean, DateTime, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column
 
 from backend.app.db.base import Base, TimestampMixin
@@ -16,6 +16,10 @@ class User(Base, TimestampMixin):
     role: Mapped[str] = mapped_column(String(50), nullable=False, default="viewer")
     is_active: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
     last_login_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    password_changed_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
+    token_version: Mapped[int] = mapped_column(Integer, default=1, nullable=False)
 
     def __repr__(self) -> str:
         return f"<User {self.email} ({self.role})>"

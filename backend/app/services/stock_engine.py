@@ -400,6 +400,23 @@ class StockEngine:
         request_id: str | None = None,
     ) -> StockMovement:
         """Traceable reversal of an eligible previous stock movement."""
+        # Idempotency check before state evaluation
+        if payload.idempotency_key:
+            existing = self.movement_repo.get_by_idempotency_key(payload.idempotency_key)
+            if existing:
+                if (
+                    existing.movement_type == MovementType.REVERSAL.value
+                    and existing.reversal_of_movement_id == movement_id
+                ):
+                    logger.info(
+                        f"Idempotent reversal replay for key {payload.idempotency_key}, movement id {existing.id}"
+                    )
+                    return existing
+                raise ConflictException(
+                    code="IDEMPOTENCY_KEY_CONFLICT",
+                    message=f"Idempotency key '{payload.idempotency_key}' was previously used with a different movement payload.",
+                )
+
         original = self.movement_repo.get_by_id(movement_id)
         if not original:
             raise NotFoundException("StockMovement", movement_id)

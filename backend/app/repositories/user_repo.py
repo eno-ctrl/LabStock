@@ -1,3 +1,5 @@
+from datetime import UTC, datetime
+
 from sqlalchemy import func
 from sqlalchemy.orm import Session
 
@@ -72,6 +74,8 @@ class UserRepository:
             user.is_active = user_in.is_active
         if user_in.password is not None and user_in.password.strip():
             user.hashed_password = get_password_hash(user_in.password)
+            user.password_changed_at = datetime.now(UTC)
+            user.token_version = (user.token_version or 1) + 1
 
         self.db.commit()
         self.db.refresh(user)

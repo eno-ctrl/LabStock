@@ -8,6 +8,8 @@ from backend.app.core.permissions import get_current_active_user
 from backend.app.core.security import (
     check_rate_limit,
     create_access_token,
+    decode_access_token,
+    revoke_token,
     verify_password,
 )
 from backend.app.db.session import get_db
@@ -27,11 +29,17 @@ def login(
 ):
     """Authenticate user with email/username and Argon2id password hash."""
     client_ip = request.client.host if request.client else "unknown"
-    rate_limit_key = f"login_{client_ip}_{payload.username_or_email}"
 
-    if not check_rate_limit(rate_limit_key, limit=20, window_seconds=60):
+    # IP-level rate limiting against brute-force and credential stuffing
+    if not check_rate_limit(f"ip_{client_ip}", limit=40, window_seconds=60):
         raise AuthenticationFailedException(
-            "Too many login attempts. Please wait 60 seconds before trying again."
+            "Too many requests from this IP address. Please wait 60 seconds before trying again."
+        )
+
+    rate_limit_key = f"login_{client_ip}_{payload.username_or_email}"
+    if not check_rate_limit(rate_limit_key, limit=15, window_seconds=60):
+        raise AuthenticationFailedException(
+            "Too many login attempts for this account. Please wait 60 seconds before trying again."
         )
 
     user_repo = UserRepository(db)
@@ -53,6 +61,7 @@ def login(
         subject=user.email,
         role=user.role,
         user_id=user.id,
+        token_version=user.token_version,
     )
 
     audit_repo = AuditRepository(db)
@@ -80,10 +89,24 @@ def read_current_user(current_user: User = Depends(get_current_active_user)):
 
 @router.post("/logout")
 def logout(
+    request: Request,
     current_user: User = Depends(get_current_active_user),
     db: Session = Depends(get_db),
 ):
-    """Acknowledge logout and log audit event."""
+    """Acknowledge logout, revoke session token, and log audit event."""
+    auth_header = request.headers.get("Authorization", "")
+    if auth_header.startswith("Bearer "):
+        raw_token = auth_header[7:].strip()
+        try:
+            payload = decode_access_token(raw_token)
+            jti = payload.get("jti")
+            exp = payload.get("exp")
+            if jti:
+                revoke_token(jti, exp)
+            revoke_token(raw_token, exp)
+        except Exception:
+            revoke_token(raw_token)
+
     audit_repo = AuditRepository(db)
     audit_repo.log_event(
         action="LOGOUT",
