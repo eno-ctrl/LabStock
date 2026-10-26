@@ -1,5 +1,6 @@
 import flet as ft
 
+import frontend.labstock_ui  # noqa: F401
 from frontend.labstock_ui.components.app_shell import AppShell
 from frontend.labstock_ui.config import COLOR_BACKGROUND, COLOR_PRIMARY_NAVY
 
