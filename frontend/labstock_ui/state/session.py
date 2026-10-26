@@ -1,4 +1,3 @@
-import contextlib
 from collections.abc import Callable
 from typing import Any, Optional
 
@@ -46,13 +45,15 @@ class SessionState:
         self._notify_listeners()
 
     def add_listener(self, listener: Callable[[], None]):
-        if listener not in self._on_auth_change_listeners:
-            self._on_auth_change_listeners.append(listener)
+        self._on_auth_change_listeners = [listener]
 
     def _notify_listeners(self):
-        for listener in self._on_auth_change_listeners:
-            with contextlib.suppress(Exception):
+        for listener in list(self._on_auth_change_listeners):
+            try:
                 listener()
+            except Exception:
+                if listener in self._on_auth_change_listeners:
+                    self._on_auth_change_listeners.remove(listener)
 
 
 session = SessionState.get_instance()

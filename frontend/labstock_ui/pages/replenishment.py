@@ -172,8 +172,9 @@ class ReplenishmentPage(ft.Container):
             border=ft.Border.all(1, COLOR_BORDER),
             border_radius=8,
             heading_row_color="#FEE2E2",
-            heading_row_height=38,
-            data_row_min_height=42,
+            heading_row_height=42,
+            data_row_min_height=52,
+            data_row_max_height=60,
         )
 
         # Low Stock Section
@@ -271,8 +272,9 @@ class ReplenishmentPage(ft.Container):
             border=ft.Border.all(1, COLOR_BORDER),
             border_radius=8,
             heading_row_color="#FEF3C7",
-            heading_row_height=38,
-            data_row_min_height=42,
+            heading_row_height=42,
+            data_row_min_height=52,
+            data_row_max_height=60,
         )
 
         return ft.Column(

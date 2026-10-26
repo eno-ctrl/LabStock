@@ -128,9 +128,10 @@ class AppShell(ft.Container):
             else:
                 page_view = DashboardPage(self.page)
 
-            # Update topbar
+            # Update topbar and sidebar active tab
             t_title, t_sub = titles.get(route, ("LabStock", ""))
             self.topbar.update_title(t_title, t_sub)
+            self.sidebar.refresh()
             self.content_area.content = page_view
 
             self.content = ft.Row(

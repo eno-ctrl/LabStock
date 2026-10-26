@@ -1,4 +1,3 @@
-import contextlib
 from collections.abc import Callable
 from typing import Any, Optional
 
@@ -20,13 +19,15 @@ class NavigationState:
     def navigate(self, route: str, params: dict[str, Any] | None = None):
         self.current_route = route
         self.route_params = params or {}
-        for listener in self._listeners:
-            with contextlib.suppress(Exception):
+        for listener in list(self._listeners):
+            try:
                 listener(self.current_route, self.route_params)
+            except Exception:
+                if listener in self._listeners:
+                    self._listeners.remove(listener)
 
     def add_listener(self, listener: Callable[[str, dict[str, Any]], None]):
-        if listener not in self._listeners:
-            self._listeners.append(listener)
+        self._listeners = [listener]
 
 
 navigation = NavigationState.get_instance()

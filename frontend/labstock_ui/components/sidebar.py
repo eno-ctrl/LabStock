@@ -1,3 +1,5 @@
+import contextlib
+
 import flet as ft
 
 from frontend.labstock_ui.config import (
@@ -196,4 +198,5 @@ class Sidebar(ft.Container):
 
     def refresh(self):
         self.content = self._build_content()
-        self.update()
+        with contextlib.suppress(Exception):
+            self.update()

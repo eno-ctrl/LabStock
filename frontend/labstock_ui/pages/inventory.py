@@ -288,20 +288,41 @@ class InventoryPage(ft.Container):
             table_rows.append(
                 ft.DataRow(
                     cells=[
-                        ft.DataCell(sku_chip(sku)),
                         ft.DataCell(
-                            ft.Column(
-                                controls=[
-                                    ft.Text(
-                                        name,
-                                        size=13,
-                                        weight=ft.FontWeight.W_600,
-                                        color=COLOR_TEXT_PRIMARY,
-                                    ),
-                                    ft.Text(category, size=11, color=COLOR_TEXT_SECONDARY),
-                                ],
-                                spacing=1,
-                                tight=True,
+                            ft.Container(
+                                content=sku_chip(sku),
+                                on_click=lambda e, i=item_id: navigation.navigate(
+                                    "item_details", {"item_id": i}
+                                ),
+                            )
+                        ),
+                        ft.DataCell(
+                            ft.Container(
+                                content=ft.Column(
+                                    controls=[
+                                        ft.Text(
+                                            name,
+                                            size=13,
+                                            weight=ft.FontWeight.W_600,
+                                            color=COLOR_TEXT_PRIMARY,
+                                            max_lines=1,
+                                            overflow=ft.TextOverflow.ELLIPSIS,
+                                        ),
+                                        ft.Text(
+                                            category,
+                                            size=11,
+                                            color=COLOR_TEXT_SECONDARY,
+                                            max_lines=1,
+                                            overflow=ft.TextOverflow.ELLIPSIS,
+                                        ),
+                                    ],
+                                    spacing=2,
+                                    alignment=ft.MainAxisAlignment.CENTER,
+                                    tight=True,
+                                ),
+                                on_click=lambda e, i=item_id: navigation.navigate(
+                                    "item_details", {"item_id": i}
+                                ),
                             )
                         ),
                         ft.DataCell(ft.Text(loc, size=12)),
@@ -376,9 +397,9 @@ class InventoryPage(ft.Container):
             border=ft.Border.all(1, COLOR_BORDER),
             border_radius=8,
             heading_row_color="#F8FAFC",
-            heading_row_height=40,
-            data_row_min_height=44,
-            data_row_max_height=52,
+            heading_row_height=42,
+            data_row_min_height=56,
+            data_row_max_height=68,
         )
 
         # Pagination controls

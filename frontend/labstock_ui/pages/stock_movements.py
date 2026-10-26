@@ -479,9 +479,9 @@ class StockMovementsPage(ft.Container):
             border=ft.Border.all(1, COLOR_BORDER),
             border_radius=8,
             heading_row_color="#F8FAFC",
-            heading_row_height=40,
-            data_row_min_height=42,
-            data_row_max_height=50,
+            heading_row_height=42,
+            data_row_min_height=52,
+            data_row_max_height=64,
         )
 
         total_items = meta.get("total", 0)
