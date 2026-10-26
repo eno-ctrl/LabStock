@@ -125,6 +125,7 @@ app.include_router(api_router, prefix=settings.API_V1_STR)
 
 
 @app.get("/health", tags=["Health"])
+@app.get(f"{settings.API_V1_STR}/health", tags=["Health"])
 def health_check():
     """Health check endpoint without disclosing sensitive credentials or internals."""
     db_engine = "sqlite" if settings.DATABASE_URL.startswith("sqlite") else "postgresql"

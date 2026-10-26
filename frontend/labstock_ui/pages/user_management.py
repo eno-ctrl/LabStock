@@ -301,9 +301,9 @@ class UserManagementPage(ft.Container):
             rows=table_rows,
             border=ft.Border.all(1, COLOR_BORDER),
             border_radius=8,
-            heading_row_color="#F8FAFC",
-            heading_row_height=40,
-            data_row_min_height=44,
+            heading_row_height=42,
+            data_row_min_height=48,
+            data_row_max_height=56,
         )
 
         return ft.Column(

@@ -22,11 +22,16 @@ class SettingsPage(ft.Container):
         self.page = page
         self.expand = True
         self.padding = ft.Padding.all(24)
+        self.recon_result_banner = ft.Container(
+            visible=False,
+            padding=ft.Padding.all(12),
+            border_radius=8,
+        )
         self.content = self._build_view()
 
     def _run_system_health(self) -> dict[str, Any]:
         try:
-            return api_client.get("/../../health")
+            return api_client.get("/health")
         except Exception:
             return {"status": "connected", "database_backend": "sqlite"}
 
@@ -42,15 +47,53 @@ class SettingsPage(ft.Container):
             sample_item = items[0]
             recon = inventory_client.reconcile_item(sample_item["id"])
 
+            is_match = recon.get("is_reconciled", False)
+            status_text = "VERIFIED 100% MATCH" if is_match else "DISCREPANCY DETECTED"
             msg = (
                 f"Ledger Reconciliation Report for {sample_item['sku']}:\n"
                 f"• Physical Stock Balance: {recon.get('balance_qoh')} units\n"
                 f"• Immutable Ledger Sum:  {recon.get('ledger_sum')} units\n"
                 f"• Variance / Discrepancy: {recon.get('difference')} units\n"
-                f"• Status: {'VERIFIED MATCH' if recon.get('is_reconciled') else 'DISCREPANCY DETECTED'}"
+                f"• Integrity Status:      {status_text}"
+            )
+
+            # Update inline banner
+            self.recon_result_banner.visible = True
+            self.recon_result_banner.bgcolor = "#ECFDF5" if is_match else "#FEF2F2"
+            self.recon_result_banner.border = ft.Border.all(1, "#A7F3D0" if is_match else "#FCA5A5")
+            self.recon_result_banner.content = ft.Row(
+                controls=[
+                    ft.Icon(
+                        ft.Icons.CHECK_CIRCLE if is_match else ft.Icons.WARNING,
+                        color="#059669" if is_match else "#DC2626",
+                        size=22,
+                    ),
+                    ft.Column(
+                        controls=[
+                            ft.Text(
+                                f"Audit Status: {status_text} ({sample_item['sku']})",
+                                size=13,
+                                weight=ft.FontWeight.BOLD,
+                                color="#065F46" if is_match else "#991B1B",
+                            ),
+                            ft.Text(
+                                f"Physical Stock: {recon.get('balance_qoh')} units  |  "
+                                f"Ledger Sum: {recon.get('ledger_sum')} units  |  "
+                                f"Variance: {recon.get('difference')} units",
+                                size=12,
+                                color="#047857" if is_match else "#B91C1C",
+                                font_family="monospace",
+                            ),
+                        ],
+                        spacing=2,
+                    ),
+                ],
+                spacing=12,
             )
 
             dialog = ft.AlertDialog(
+                modal=True,
+                open=True,
                 title=ft.Text("Database Reconciliation Audit", size=16, weight=ft.FontWeight.BOLD),
                 content=ft.Text(msg, size=13, font_family="monospace"),
                 actions=[
@@ -58,8 +101,8 @@ class SettingsPage(ft.Container):
                 ],
             )
             self.page.overlay.append(dialog)
-            dialog.open = True
             self.page.update()
+            self._show_toast(f"Ledger audit: {status_text}")
         except Exception as e:
             self._show_toast(f"Reconciliation error: {e}", is_error=True)
 
@@ -249,6 +292,7 @@ class SettingsPage(ft.Container):
                             ),
                         ],
                     ),
+                    self.recon_result_banner,
                 ],
                 spacing=10,
             ),
