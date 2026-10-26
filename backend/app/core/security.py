@@ -1,3 +1,4 @@
+import time
 import uuid
 from datetime import UTC, datetime, timedelta
 from typing import Any
@@ -107,8 +108,6 @@ _login_attempts: dict[str, list[float]] = {}
 
 def check_rate_limit(key: str, limit: int = 15, window_seconds: int = 60) -> bool:
     """Sliding window rate limiter with periodic cleanup of stale keys."""
-    import time
-
     now = time.time()
     # Prune stale keys if tracking dictionary grows
     if len(_login_attempts) > 1000:

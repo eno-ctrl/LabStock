@@ -91,7 +91,7 @@ async def labstock_exception_handler(request: Request, exc: LabStockException):
 async def validation_exception_handler(request: Request, exc: RequestValidationError):
     correlation_id = getattr(request.state, "correlation_id", None)
     return JSONResponse(
-        status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+        status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
         content={
             "error": {
                 "code": "VALIDATION_ERROR",

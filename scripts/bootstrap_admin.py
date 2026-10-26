@@ -9,7 +9,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from backend.app.db.base import Base
 from backend.app.db.session import SessionLocal, engine
 from backend.app.repositories.user_repo import UserRepository
-from backend.app.schemas.user import UserCreate, UserRole
+from backend.app.schemas.user import UserCreate, UserRole, UserUpdate
 
 
 def bootstrap_admin(email: str, full_name: str, password: str):
@@ -24,8 +24,7 @@ def bootstrap_admin(email: str, full_name: str, password: str):
                 existing.is_active = True
                 user_repo.update(
                     existing,
-                    user_in=UserCreate(
-                        email=email,
+                    user_in=UserUpdate(
                         full_name=full_name,
                         password=password,
                         role=UserRole.ADMINISTRATOR,
