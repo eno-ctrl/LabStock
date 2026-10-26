@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#f8f9ff;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "surface-container-highest": "#d3e4fe", "inverse-surface": "#213145", "surface-container-high": "#dce9ff", "secondary-fixed": "#cfe4ff", "surface-tint": "#4f5f77", "tertiary-fixed": "#7ff9c7", "outline-variant": "#c4c6cd", "tertiary-container": "#002c1d", "on-error-container": "#93000a", "secondary-container": "#c5dfff", "inverse-on-surface": "#eaf1ff", "surface-container": "#e5eeff", "surface": "#f8f9ff", "on-primary-fixed": "#0a1c31", "on-primary-container": "#7d8da7", "on-surface": "#0b1c30", "on-error": "#ffffff", "on-primary": "#ffffff", "on-tertiary-fixed": "#002115", "on-background": "#0b1c30", "primary-fixed-dim": "#b7c8e3", "secondary-fixed-dim": "#afc9e8", "tertiary": "#00140c", "inverse-primary": "#b7c8e3", "tertiary-fixed-dim": "#61dcac", "primary-fixed": "#d3e4ff", "on-surface-variant": "#44474d", "on-secondary": "#ffffff", "primary-container": "#15263b", "outline": "#74777d", "on-tertiary-fixed-variant": "#005139", "primary": "#001125", "surface-bright": "#f8f9ff", "on-secondary-fixed": "#001d34", "secondary": "#47617b", "surface-container-low": "#eff4ff", "background": "#f8f9ff", "error": "#ba1a1a", "on-primary-fixed-variant": "#37485e", "surface-variant": "#d3e4fe", "surface-container-lowest": "#ffffff", "error-container": "#ffdad6", "on-secondary-fixed-variant": "#2f4962", "on-secondary-container": "#4a637e", "surface-dim": "#cbdbf5", "on-tertiary-container": "#09a075", "on-tertiary": "#ffffff" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-xxs": "0.125rem", "space-lg": "1rem", "margin": "1.5rem", "space-xs": "0.25rem", "gutter-compact": "0.5rem", "gutter": "1rem", "margin-compact": "1rem", "space-md": "0.75rem", "space-xl": "1.5rem", "space-2xl": "2rem", "space-sm": "0.5rem" }, fontFamily: { "body-lg": ["Inter"], "code-sm": ["JetBrains Mono"], "body-sm": ["Inter"], "headline-md": ["Inter"], "headline-sm": ["Inter"], "label-md": ["Inter"], "body-md": ["Inter"], "code-md": ["JetBrains Mono"], "display-lg": ["Inter"], "label-sm": ["Inter"], "headline-lg": ["Inter"], "title-md": ["Inter"] }, fontSize: { "body-lg": ["16px", { lineHeight: "24px", letterSpacing: "0em", fontWeight: "400" }], "code-sm": ["11px", { lineHeight: "14px", letterSpacing: "0em", fontWeight: "500" }], "body-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.01em", fontWeight: "400" }], "headline-md": ["20px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "600" }], "headline-sm": ["16px", { lineHeight: "24px", letterSpacing: "-0.005em", fontWeight: "600" }], "label-md": ["13px", { lineHeight: "18px", letterSpacing: "0.01em", fontWeight: "500" }], "body-md": ["14px", { lineHeight: "20px", letterSpacing: "0em", fontWeight: "400" }], "code-md": ["13px", { lineHeight: "18px", letterSpacing: "0em", fontWeight: "500" }], "display-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700" }], "label-sm": ["11px", { lineHeight: "16px", letterSpacing: "0.03em", fontWeight: "600" }], "headline-lg": ["24px", { lineHeight: "32px", letterSpacing: "-0.015em", fontWeight: "600" }], "title-md": ["14px", { lineHeight: "20px", letterSpacing: "0em", fontWeight: "600" }] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-lg bg-primary-container flex items-center justify-center text-on-primary"><span class="material-symbols-outlined text-[20px]">science</span></div><div class="flex flex-col"><span class="font-title-md text-title-md text-on-surface leading-tight tracking-tight">LabStock</span><span class="font-label-sm text-label-sm text-on-surface-variant leading-none">Reports</span></div></div><div class="flex items-center gap-space-xs"><button aria-label="Notifications" class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-[22px]">notifications</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-space-xs"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full pb-8">
+<!-- RBAC Security Ribbon -->
+<div class="px-margin pt-space-md pb-space-xs">
+<div class="bg-surface-container-low rounded-xl p-space-sm flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-space-xs min-w-0">
+<span class="material-symbols-outlined text-[18px] text-on-tertiary-container shrink-0" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<p class="font-code-sm text-code-sm text-on-surface-variant truncate">
+          Admin Access Only • RBAC Enforced via FastAPI Dependencies
+        </p>
+</div>
+<span class="font-code-sm text-code-sm text-on-tertiary-container bg-surface-container-highest px-space-xs py-space-xxs rounded font-medium shrink-0 ml-space-xs">v1.4</span>
+</div>
+</div>
+<!-- Header & Primary Actions -->
+<div class="px-margin py-space-sm flex flex-col gap-space-sm">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex flex-col">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Access Control</p>
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-semibold tracking-tight">User Management</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Manage application accounts, roles, and access.</p>
+</div>
+</div>
+<!-- Dual Actions (Add User + Legend Drawer Trigger) -->
+<div class="flex items-center gap-space-sm mt-space-xs">
+<button class="flex-1 bg-primary text-on-primary rounded-xl h-11 px-space-md flex items-center justify-center gap-space-xs shadow-md active:scale-[0.98] transition-transform" id="addUserBtn">
+<span class="material-symbols-outlined text-[20px] text-tertiary-fixed">person_add</span>
+<span class="font-title-md text-title-md font-semibold text-white">+ Add User</span>
+</button>
+<button class="bg-surface-container text-on-surface rounded-xl h-11 px-space-md flex items-center justify-center gap-space-xs shadow-sm hover:bg-surface-container-high transition-colors" id="openMatrixBtn">
+<span class="material-symbols-outlined text-[19px] text-on-surface-variant">rule</span>
+<span class="font-label-md text-label-md">Role Matrix</span>
+</button>
+</div>
+</div>
+<!-- User Summary Metric Strip (4 Cards) -->
+<div class="px-margin py-space-xs">
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Total Users</span>
+<span class="material-symbols-outlined text-[18px] text-secondary">group</span>
+</div>
+<div class="mt-space-xs flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg text-on-surface font-bold tracking-tight">12</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">accts</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Active Accounts</span>
+<div class="w-2.5 h-2.5 rounded-full bg-on-tertiary-container shadow-[0_0_8px_rgba(9,160,117,0.5)]"></div>
+</div>
+<div class="mt-space-xs flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg text-on-surface font-bold tracking-tight">11</span>
+<span class="font-code-sm text-code-sm text-on-tertiary-container font-medium">91.6%</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Inactive</span>
+<span class="material-symbols-outlined text-[18px] text-outline">person_off</span>
+</div>
+<div class="mt-space-xs flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg text-on-surface font-bold tracking-tight">1</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">revoked</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Administrators</span>
+<span class="material-symbols-outlined text-[18px] text-primary" style="font-variation-settings: 'FILL' 1;">shield_person</span>
+</div>
+<div class="mt-space-xs flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg text-on-surface font-bold tracking-tight">3</span>
+<span class="font-code-sm text-code-sm text-primary font-medium">super</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Search & Role Filtering Section -->
+<div class="px-margin pt-space-md pb-space-xs flex flex-col gap-space-sm">
+<!-- Live Search Field -->
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-space-md top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full h-11 pl-11 pr-10 rounded-xl bg-surface-container-lowest text-on-surface placeholder:text-outline text-body-md font-body-md shadow-sm outline-none focus:bg-surface-container-low transition-colors" id="userSearchInput" placeholder="Search user by name, email, or role..." type="text"/>
+<button class="hidden absolute right-space-sm top-1/2 -translate-y-1/2 text-outline hover:text-on-surface p-space-xxs" id="clearSearchBtn">
+<span class="material-symbols-outlined text-[18px]">cancel</span>
+</button>
+</div>
+<!-- Scrollable Filter Pills -->
+<div class="flex items-center gap-space-xs overflow-x-auto no-scrollbar py-space-xxs" id="filterPillsContainer">
+<button class="filter-pill bg-primary text-on-primary px-space-md py-space-xs rounded-full font-label-md text-label-md font-medium whitespace-nowrap shadow-sm active:scale-95 transition-all" data-filter="all">
+        All Roles (12)
+      </button>
+<button class="filter-pill bg-surface-container-lowest text-on-surface-variant hover:text-on-surface px-space-md py-space-xs rounded-full font-label-md text-label-md whitespace-nowrap shadow-sm active:scale-95 transition-all" data-filter="admin">
+        Admin (3)
+      </button>
+<button class="filter-pill bg-surface-container-lowest text-on-surface-variant hover:text-on-surface px-space-md py-space-xs rounded-full font-label-md text-label-md whitespace-nowrap shadow-sm active:scale-95 transition-all" data-filter="manager">
+        Inventory Manager (5)
+      </button>
+<button class="filter-pill bg-surface-container-lowest text-on-surface-variant hover:text-on-surface px-space-md py-space-xs rounded-full font-label-md text-label-md whitespace-nowrap shadow-sm active:scale-95 transition-all" data-filter="viewer">
+        Viewer (4)
+      </button>
+</div>
+</div>
+<!-- User Account Cards List -->
+<div class="px-margin flex flex-col gap-space-md pt-space-xs" id="userCardList">
+<!-- Card 1: Dr. Aris Thorne (Admin - Protected) -->
+<div class="user-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-md relative overflow-hidden transition-all" data-role="admin" data-search="dr aris thorne aris.thorne@lab.edu administrator">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="relative shrink-0">
+<img class="w-12 h-12 rounded-xl object-cover" data-alt="Close up professional laboratory portrait of Dr Aris Thorne, seasoned scientist in navy lab coat, clean studio lighting with soft cyan backdrop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAa43L3jQSI8OHjxqJOt5-ZIEr_zy-qXSwCjc2F-gdlnXAUMNzk-Cz7xyyTrHXLC5SZnfbXxDBgS5M8Ospv1Kw8XAP4dw5SnTV-4ae-8OwWmzDyzBkYgXlcucq5OXHwbWUTvLaHBq3eaG1eOHJ1dTk04BRexDVaQ14AZjLbKwRhzWV2TDkwCvpVclhvjUXY8oUrS14BSYz_z12ogayfi78VbWV6Xuclcdn-8Iip4vPs65NZYaafQl-k"/>
+<span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-on-tertiary-container shadow-[0_0_6px_rgba(9,160,117,0.7)] ring-2 ring-surface-container-lowest" title="Active Account"></span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs">
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface truncate">Dr. Aris Thorne</h2>
+<span class="bg-surface-container px-space-xs py-space-xxs rounded text-on-surface-variant font-code-sm text-code-sm">ID: 001</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">aris.thorne@lab.edu</p>
+</div>
+</div>
+<!-- Role Badge: Admin -->
+<span class="inline-flex items-center gap-space-xxs bg-primary text-on-primary px-space-sm py-space-xs rounded-full font-label-sm text-label-sm font-semibold shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-tertiary-fixed" style="font-variation-settings: 'FILL' 1;">shield</span>
+          Administrator
+        </span>
+</div>
+<!-- Metadata Grid -->
+<div class="grid grid-cols-2 gap-space-xs bg-surface-container-low rounded-lg p-space-sm">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Last Login</span>
+<span class="font-code-sm text-code-sm text-on-surface font-medium">Today, 14:15</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Created On</span>
+<span class="font-code-sm text-code-sm text-on-surface font-medium">Jan 12, 2024</span>
+</div>
+</div>
+<!-- Permissions Grant -->
+<div class="flex flex-col gap-space-xxs">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Granted RBAC Scopes</span>
+<div class="bg-surface-container-lowest rounded-lg p-space-xs">
+<p class="font-code-sm text-code-sm text-on-surface leading-relaxed">
+            Full System Access • User Administration • Audit Ledger Correction
+          </p>
+</div>
+</div>
+<!-- Action Panel with Safeguard Note -->
+<div class="flex flex-col gap-space-xs pt-space-xxs">
+<div class="flex items-center gap-space-xs">
+<button class="flex-1 h-9 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-medium hover:bg-surface-container-high transition-colors flex items-center justify-center gap-space-xxs active:scale-98">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+            Edit Profile
+          </button>
+<button class="flex-1 h-9 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-medium hover:bg-surface-container-high transition-colors flex items-center justify-center gap-space-xxs active:scale-98">
+<span class="material-symbols-outlined text-[16px]">admin_panel_settings</span>
+            Change Role
+          </button>
+</div>
+<div class="flex items-center gap-space-xs px-space-xs py-1">
+<span class="material-symbols-outlined text-[15px] text-on-surface-variant">lock</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Protected from self-deactivation &amp; downgrade</span>
+</div>
+</div>
+</div>
+<!-- Card 2: Sarah Miller (Inventory Manager) -->
+<div class="user-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-md relative overflow-hidden transition-all" data-role="manager" data-search="sarah miller s.miller@lab.edu inventory manager">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="relative shrink-0">
+<img class="w-12 h-12 rounded-xl object-cover" data-alt="Portrait photo of Sarah Miller, laboratory operations supervisor with safety goggles hanging around neck, clean industrial pharmacy environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_TPuaZdZVzwrPjKBX28XpWLtS7C4TmXT4L7Et7vdonOvwW2vsDJrUm3G1uuA697sbnIIlR-XSOf5Bb9pQQVcbD3f5plJwUZGO0Q0_fCM_NlNVDwu758WhWFCev0CHyqirHCYGGxJhaG5CdbRyEziWFhkX3Fun2Rf7G4IHq6x6bhAFiQJ0_CTWNoKMRaViB8FkF24CgZTlW6c7L3JsxmdiSI_4DJlfj0kmWCcFZPfUv-m0ecJOuefR"/>
+<span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-on-tertiary-container shadow-[0_0_6px_rgba(9,160,117,0.7)] ring-2 ring-surface-container-lowest" title="Active Account"></span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs">
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface truncate">Sarah Miller</h2>
+<span class="bg-surface-container px-space-xs py-space-xxs rounded text-on-surface-variant font-code-sm text-code-sm">ID: 004</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">s.miller@lab.edu</p>
+</div>
+</div>
+<!-- Role Badge: Inventory Manager (Mint Theme) -->
+<span class="inline-flex items-center gap-space-xxs bg-tertiary-fixed text-on-tertiary-fixed px-space-sm py-space-xs rounded-full font-label-sm text-label-sm font-semibold shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">inventory_2</span>
+          Inv. Manager
+        </span>
+</div>
+<!-- Metadata Grid -->
+<div class="grid grid-cols-2 gap-space-xs bg-surface-container-low rounded-lg p-space-sm">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Last Login</span>
+<span class="font-code-sm text-code-sm text-on-surface font-medium">Today, 11:42</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Created On</span>
+<span class="font-code-sm text-code-sm text-on-surface font-medium">Feb 04, 2024</span>
+</div>
+</div>
+<!-- Permissions Grant -->
+<div class="flex flex-col gap-space-xxs">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Granted RBAC Scopes</span>
+<div class="bg-surface-container-lowest rounded-lg p-space-xs">
+<p class="font-code-sm text-code-sm text-on-surface leading-relaxed">
+            Receive/Issue Stock • PR Creation • Damaged Item Scrap
+          </p>
+</div>
+</div>
+<!-- Action Panel -->
+<div class="flex items-center gap-space-xs pt-space-xxs">
+<button class="flex-1 h-9 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-medium hover:bg-surface-container-high transition-colors flex items-center justify-center gap-space-xxs active:scale-98">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+          Edit
+        </button>
+<button class="flex-1 h-9 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-medium hover:bg-surface-container-high transition-colors flex items-center justify-center gap-space-xxs active:scale-98">
+<span class="material-symbols-outlined text-[16px]">admin_panel_settings</span>
+          Change Role
+        </button>
+<button class="h-9 px-space-sm rounded-lg bg-surface-container-highest text-error font-label-md text-label-md font-medium hover:bg-error-container transition-colors flex items-center justify-center gap-space-xxs active:scale-98" title="Deactivate Account">
+<span class="material-symbols-outlined text-[16px]">block</span>
+          Deactivate
+        </button>
+</div>
+</div>
+<!-- Card 3: Alex Rivera (Viewer) -->
+<div class="user-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-md relative overflow-hidden transition-all" data-role="viewer" data-search="alex rivera a.rivera@student.lab.edu viewer">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="relative shrink-0">
+<img class="w-12 h-12 rounded-xl object-cover" data-alt="Portrait photo of Alex Rivera, clinical research assistant and graduate scholar wearing sterile spectacles and smart lab coat" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpY6e9SK1rTY4WrD9jeE3h-v5Rvw0BtNlddHNmrAMi0xXggdMDno7oVnwbqFfVQuc5Y4JBsHhMHcVcRsUbg8eBxECrUPdXNQxRJZdH08juI_r6I2OG18pGlh_YOr2zvybocC9mHiFla2oMZbF2DjxwgVkO-Hdwuc6NTQljWzdDO661RECMnuq7QNwcdgH_cgYtOXoCP_JeAnAA458VS8LacfCDvharc3HomMgozTnrZ1kjo4qvvzCE"/>
+<span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-on-tertiary-container shadow-[0_0_6px_rgba(9,160,117,0.7)] ring-2 ring-surface-container-lowest" title="Active Account"></span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs">
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface truncate">Alex Rivera</h2>
+<span class="bg-surface-container px-space-xs py-space-xxs rounded text-on-surface-variant font-code-sm text-code-sm">ID: 009</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">a.rivera@student.lab.edu</p>
+</div>
+</div>
+<!-- Role Badge: Viewer (Muted Blue Theme) -->
+<span class="inline-flex items-center gap-space-xxs bg-secondary-fixed text-on-secondary-fixed px-space-sm py-space-xs rounded-full font-label-sm text-label-sm font-semibold shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">visibility</span>
+          Viewer
+        </span>
+</div>
+<!-- Metadata Grid -->
+<div class="grid grid-cols-2 gap-space-xs bg-surface-container-low rounded-lg p-space-sm">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Last Login</span>
+<span class="font-code-sm text-code-sm text-on-surface font-medium">Yesterday, 16:30</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Created On</span>
+<span class="font-code-sm text-code-sm text-on-surface font-medium">Sep 01, 2024</span>
+</div>
+</div>
+<!-- Permissions Grant -->
+<div class="flex flex-col gap-space-xxs">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Granted RBAC Scopes</span>
+<div class="bg-surface-container-lowest rounded-lg p-space-xs">
+<p class="font-code-sm text-code-sm text-on-surface leading-relaxed">
+            Read-only Inventory &amp; Movement Views • Cannot alter stock
+          </p>
+</div>
+</div>
+<!-- Action Panel -->
+<div class="flex items-center gap-space-xs pt-space-xxs">
+<button class="flex-1 h-9 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-medium hover:bg-surface-container-high transition-colors flex items-center justify-center gap-space-xxs active:scale-98">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+          Edit
+        </button>
+<button class="flex-1 h-9 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-medium hover:bg-surface-container-high transition-colors flex items-center justify-center gap-space-xxs active:scale-98">
+<span class="material-symbols-outlined text-[16px]">admin_panel_settings</span>
+          Change Role
+        </button>
+<button class="h-9 px-space-sm rounded-lg bg-surface-container-highest text-error font-label-md text-label-md font-medium hover:bg-error-container transition-colors flex items-center justify-center gap-space-xxs active:scale-98" title="Deactivate Account">
+<span class="material-symbols-outlined text-[16px]">block</span>
+          Deactivate
+        </button>
+</div>
+</div>
+<!-- Card 4: Marcus Vance (Inactive - Inventory Manager) -->
+<div class="user-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-md relative overflow-hidden transition-all opacity-85" data-role="manager" data-search="marcus vance m.vance@lab.edu inventory manager inactive">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="relative shrink-0 grayscale">
+<div class="w-12 h-12 rounded-xl bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-bold text-headline-sm">
+              MV
+            </div>
+<span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-outline ring-2 ring-surface-container-lowest" title="Inactive Account"></span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs">
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface-variant line-through truncate">Marcus Vance</h2>
+<span class="bg-surface-container px-space-xs py-space-xxs rounded text-on-surface-variant font-code-sm text-code-sm">ID: 003</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">m.vance@lab.edu</p>
+</div>
+</div>
+<!-- Role Badge & Inactive Slate Badge -->
+<div class="flex flex-col items-end gap-1 shrink-0">
+<span class="inline-flex items-center gap-space-xxs bg-surface-container-high text-on-surface-variant px-space-sm py-space-xs rounded-full font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">person_off</span>
+            Inactive
+          </span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Inv. Manager</span>
+</div>
+</div>
+<!-- Inactive Note Banner -->
+<div class="bg-surface-container-low rounded-lg p-space-sm flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-outline shrink-0 mt-0.5">info</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Deactivated • Active sessions revoked. Historical stock movements preserved in compliance log.
+        </p>
+</div>
+<!-- Action Panel: Reactivate & Audit Log -->
+<div class="flex items-center gap-space-xs pt-space-xxs">
+<button class="flex-1 h-9 rounded-lg bg-tertiary-container text-on-tertiary-container font-label-md text-label-md font-semibold hover:bg-tertiary-fixed transition-colors flex items-center justify-center gap-space-xxs active:scale-98">
+<span class="material-symbols-outlined text-[16px]">restart_alt</span>
+          Reactivate Account
+        </button>
+<button class="flex-1 h-9 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-medium hover:bg-surface-container-high transition-colors flex items-center justify-center gap-space-xxs active:scale-98">
+<span class="material-symbols-outlined text-[16px]">history</span>
+          Audit Log
+        </button>
+</div>
+</div>
+</div>
+<!-- Role & Permission Matrix Reference Section -->
+<div class="px-margin pt-space-lg">
+<div class="bg-surface-container-low rounded-2xl p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">security</span>
+<h2 class="font-title-md text-title-md font-semibold text-on-surface">Role &amp; Permission Matrix Reference</h2>
+</div>
+<span class="font-code-sm text-code-sm bg-surface-container-highest px-space-xs py-space-xxs rounded text-on-surface">JWT / Argon2</span>
+</div>
+<!-- Quick Compact Matrix Grid -->
+<div class="flex flex-col gap-space-xs bg-surface-container-lowest rounded-xl p-space-sm">
+<div class="flex items-center justify-between py-space-xxs border-b-0">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Admin</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Unrestricted / Ledger Override</span>
+</div>
+<div class="flex items-center justify-between py-space-xxs">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container"></span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Inv. Manager</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Stock Receive, Scrap, PR Creation</span>
+</div>
+<div class="flex items-center justify-between py-space-xxs">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Viewer</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Read-only Catalogs &amp; Reports</span>
+</div>
+</div>
+<!-- Safeguard Warning Card -->
+<div class="bg-surface-container rounded-xl p-space-sm flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-error shrink-0 mt-0.5">policy</span>
+<div class="flex flex-col gap-space-xxs">
+<p class="font-label-sm text-label-sm font-semibold text-on-surface">Administrator Safeguard</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Last active administrator account cannot be deactivated or downgraded. System requires at least 1 verified superuser.
+          </p>
+</div>
+</div>
+<!-- FastAPI Tech Footer Tag -->
+<div class="flex items-center justify-between pt-space-xxs font-code-sm text-code-sm text-on-surface-variant">
+<span>JWT Auth: <code class="text-on-surface">/api/v1/users</code></span>
+<span>Bcrypt/Argon2 hashing</span>
+</div>
+</div>
+</div>
+<!-- Role Matrix Slide-Over Modal / Drawer (Interactive) -->
+<div class="fixed inset-0 bg-primary-container/50 backdrop-blur-sm z-50 hidden transition-opacity" id="matrixDrawerBackdrop">
+<div class="fixed bottom-0 inset-x-0 bg-surface-container-lowest rounded-t-3xl p-space-lg shadow-2xl max-h-[85vh] overflow-y-auto flex flex-col gap-space-md transform translate-y-full transition-transform" id="matrixDrawerPanel">
+<div class="w-12 h-1 bg-surface-container-highest rounded-full self-center mb-space-xxs"></div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[22px]">policy</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">System Role &amp; Access Details</h2>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface" id="closeMatrixBtn">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Drawer Content: RBAC Matrix Detail -->
+<div class="flex flex-col gap-space-sm">
+<div class="p-space-sm bg-surface-container-low rounded-xl flex flex-col gap-space-xxs">
+<span class="font-title-md text-title-md font-semibold text-primary">Administrator (Level 3)</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Complete operational autonomy: user provisioning, role promotion, physical lot overrides, and raw audit log exports.</p>
+</div>
+<div class="p-space-sm bg-surface-container-low rounded-xl flex flex-col gap-space-xxs">
+<span class="font-title-md text-title-md font-semibold text-on-tertiary-container">Inventory Manager (Level 2)</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Inbound shipment receiving, stock relocation, reagent expiration write-offs, and batch inspection confirmations.</p>
+</div>
+<div class="p-space-sm bg-surface-container-low rounded-xl flex flex-col gap-space-xxs">
+<span class="font-title-md text-title-md font-semibold text-secondary">Viewer (Level 1)</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Search inventory items, inspect MSDS chemical safety sheets, view active stock levels, read movements without mutation power.</p>
+</div>
+</div>
+<!-- Security Endpoint Footnote -->
+<div class="bg-surface-container-highest rounded-xl p-space-sm flex items-center justify-between font-code-sm text-code-sm">
+<span class="text-on-surface font-medium">FastAPI Security Dependency:</span>
+<code class="text-on-surface-variant">get_current_active_admin</code>
+</div>
+<button class="w-full bg-primary text-on-primary py-space-sm rounded-xl font-title-md text-title-md font-semibold" id="closeMatrixFooterBtn">
+        Done
+      </button>
+</div>
+</div>
+<!-- Interactive Add User Modal (Quick Micro-interaction) -->
+<div class="fixed inset-0 bg-primary-container/50 backdrop-blur-sm z-50 hidden transition-opacity flex items-end" id="addUserModal">
+<div class="w-full bg-surface-container-lowest rounded-t-3xl p-space-lg shadow-2xl flex flex-col gap-space-md">
+<div class="w-12 h-1 bg-surface-container-highest rounded-full self-center mb-space-xxs"></div>
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Provision Lab Account</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Account receives temporary password via verified email.</p>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant" id="closeAddUserBtn">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-space-sm">
+<div>
+<label class="font-label-sm text-label-sm text-on-surface-variant mb-space-xxs block">Full Name</label>
+<input class="w-full h-10 px-space-md rounded-lg bg-surface-container-low text-on-surface text-body-md font-body-md outline-none" placeholder="e.g., Dr. Jane Foster" type="text"/>
+</div>
+<div>
+<label class="font-label-sm text-label-sm text-on-surface-variant mb-space-xxs block">Institutional Email</label>
+<input class="w-full h-10 px-space-md rounded-lg bg-surface-container-low text-on-surface text-body-md font-body-md outline-none" placeholder="j.foster@lab.edu" type="email"/>
+</div>
+<div>
+<label class="font-label-sm text-label-sm text-on-surface-variant mb-space-xxs block">Assigned Role</label>
+<div class="grid grid-cols-3 gap-space-xs">
+<button class="h-9 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-medium text-center">Admin</button>
+<button class="h-9 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md font-medium text-center">Manager</button>
+<button class="h-9 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md font-medium text-center">Viewer</button>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-xs pt-space-xs">
+<button class="flex-1 bg-primary text-on-primary py-space-sm rounded-xl font-title-md text-title-md font-semibold active:scale-98" id="confirmAddUserBtn">
+          Create &amp; Dispatch Invite
+        </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function initUserManagement() {
+    const searchInput = document.getElementById('userSearchInput');
+    const clearBtn = document.getElementById('clearSearchBtn');
+    const filterPills = document.querySelectorAll('.filter-pill');
+    const userCards = document.querySelectorAll('.user-card');
+    
+    // Matrix Drawer elements
+    const openMatrixBtn = document.getElementById('openMatrixBtn');
+    const closeMatrixBtn = document.getElementById('closeMatrixBtn');
+    const closeMatrixFooterBtn = document.getElementById('closeMatrixFooterBtn');
+    const matrixDrawerBackdrop = document.getElementById('matrixDrawerBackdrop');
+    const matrixDrawerPanel = document.getElementById('matrixDrawerPanel');
+
+    // Add User Modal elements
+    const addUserBtn = document.getElementById('addUserBtn');
+    const closeAddUserBtn = document.getElementById('closeAddUserBtn');
+    const addUserModal = document.getElementById('addUserModal');
+    const confirmAddUserBtn = document.getElementById('confirmAddUserBtn');
+
+    let currentFilter = 'all';
+    let searchQuery = '';
+
+    function applyFilters() {
+      userCards.forEach(card => {
+        const cardRole = card.getAttribute('data-role');
+        const cardSearch = (card.getAttribute('data-search') || '').toLowerCase();
+
+        const matchesRole = currentFilter === 'all' || cardRole === currentFilter;
+        const matchesQuery = !searchQuery || cardSearch.includes(searchQuery);
+
+        if (matchesRole && matchesQuery) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    // Search Input behavior
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value.trim().toLowerCase();
+      if (searchQuery.length > 0) {
+        clearBtn.classList.remove('hidden');
+      } else {
+        clearBtn.classList.add('hidden');
+      }
+      applyFilters();
+    });
+
+    clearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      searchQuery = '';
+      clearBtn.classList.add('hidden');
+      applyFilters();
+      searchInput.focus();
+    });
+
+    // Pill Filtering
+    filterPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        filterPills.forEach(p => {
+          p.classList.remove('bg-primary', 'text-on-primary', 'font-semibold');
+          p.classList.add('bg-surface-container-lowest', 'text-on-surface-variant');
+        });
+        pill.classList.remove('bg-surface-container-lowest', 'text-on-surface-variant');
+        pill.classList.add('bg-primary', 'text-on-primary', 'font-semibold');
+
+        currentFilter = pill.getAttribute('data-filter');
+        applyFilters();
+      });
+    });
+
+    // Drawer Open / Close Logic
+    function openDrawer() {
+      matrixDrawerBackdrop.classList.remove('hidden');
+      setTimeout(() => {
+        matrixDrawerPanel.classList.remove('translate-y-full');
+      }, 10);
+    }
+
+    function closeDrawer() {
+      matrixDrawerPanel.classList.add('translate-y-full');
+      setTimeout(() => {
+        matrixDrawerBackdrop.classList.add('hidden');
+      }, 250);
+    }
+
+    openMatrixBtn.addEventListener('click', openDrawer);
+    closeMatrixBtn.addEventListener('click', closeDrawer);
+    closeMatrixFooterBtn.addEventListener('click', closeDrawer);
+    matrixDrawerBackdrop.addEventListener('click', (e) => {
+      if (e.target === matrixDrawerBackdrop) closeDrawer();
+    });
+
+    // Add User Modal
+    addUserBtn.addEventListener('click', () => {
+      addUserModal.classList.remove('hidden');
+    });
+
+    function closeAddUser() {
+      addUserModal.classList.add('hidden');
+    }
+
+    closeAddUserBtn.addEventListener('click', closeAddUser);
+    confirmAddUserBtn.addEventListener('click', () => {
+      closeAddUser();
+    });
+    addUserModal.addEventListener('click', (e) => {
+      if (e.target === addUserModal) closeAddUser();
+    });
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(21,38,59,0.05)]" data-active-classes="text-primary font-semibold"><div class="flex items-center justify-around h-16 px-space-xs"><a class="flex flex-col items-center justify-center min-w-[56px] h-12 text-on-surface-variant hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[22px]">dashboard</span><span class="font-label-sm text-label-sm mt-space-xxs">Dashboard</span></a><a class="flex flex-col items-center justify-center min-w-[56px] h-12 text-on-surface-variant hover:text-on-surface transition-colors" data-path="inventory" href="#"><span class="material-symbols-outlined text-[22px]">inventory_2</span><span class="font-label-sm text-label-sm mt-space-xxs">Inventory</span></a><a class="flex flex-col items-center justify-center min-w-[56px] h-12 text-on-surface-variant hover:text-on-surface transition-colors" data-path="movements" href="#"><span class="material-symbols-outlined text-[22px]">swap_horiz</span><span class="font-label-sm text-label-sm mt-space-xxs">Movements</span></a><a class="flex flex-col items-center justify-center min-w-[56px] h-12 text-on-surface-variant hover:text-on-surface transition-colors" data-path="replenish" href="#"><span class="material-symbols-outlined text-[22px]">shopping_cart</span><span class="font-label-sm text-label-sm mt-space-xxs">Replenish</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[56px] h-12 transition-colors text-primary font-semibold" data-path="reports" href="#"><span class="material-symbols-outlined text-[22px]">bar_chart</span><span class="font-label-sm text-label-sm mt-space-xxs">Reports</span></a></div></nav></body></html>

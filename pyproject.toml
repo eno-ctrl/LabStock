@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "labstock"
+version = "1.0.0"
+description = "Laboratory Inventory & Spare Parts Management System"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.110.0",
+    "uvicorn[standard]>=0.28.0",
+    "pydantic>=2.6.0",
+    "pydantic-settings>=2.2.0",
+    "sqlalchemy>=2.0.28",
+    "alembic>=1.13.0",
+    "argon2-cffi>=23.1.0",
+    "pyjwt[crypto]>=2.8.0",
+    "python-multipart>=0.0.9",
+    "httpx>=0.27.0",
+    "flet>=1.0.0",
+    "pytest>=8.0.0",
+    "ruff>=0.3.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["backend/app/tests", "frontend/labstock_ui/tests"]
+pythonpath = [".", "backend"]
+addopts = "-v --tb=short"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["B008", "E501"]

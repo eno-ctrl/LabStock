@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "primary-fixed-dim": "#b7c8e3", "surface-container-lowest": "#ffffff", "surface-tint": "#4f5f77", "on-tertiary-fixed": "#002115", "tertiary-container": "#002c1d", "on-secondary-container": "#4a637e", "on-surface-variant": "#44474d", "on-secondary-fixed-variant": "#2f4962", "outline-variant": "#c4c6cd", "primary-fixed": "#d3e4ff", "inverse-surface": "#213145", "on-primary-container": "#7d8da7", "surface-container-highest": "#d3e4fe", "on-error-container": "#93000a", "on-surface": "#0b1c30", "on-primary-fixed": "#0a1c31", "on-primary-fixed-variant": "#37485e", "on-tertiary-fixed-variant": "#005139", "secondary": "#47617b", "on-error": "#ffffff", "outline": "#74777d", "surface-bright": "#f8f9ff", "on-primary": "#ffffff", "surface-container": "#e5eeff", "tertiary-fixed": "#7ff9c7", "tertiary-fixed-dim": "#61dcac", "surface-container-low": "#eff4ff", "background": "#f8f9ff", "inverse-on-surface": "#eaf1ff", "on-secondary-fixed": "#001d34", "secondary-fixed-dim": "#afc9e8", "surface": "#f8f9ff", "surface-container-high": "#dce9ff", "on-tertiary-container": "#09a075", "on-tertiary": "#ffffff", "on-background": "#0b1c30", "secondary-container": "#c5dfff", "on-secondary": "#ffffff", "error-container": "#ffdad6", "inverse-primary": "#b7c8e3", "primary-container": "#15263b", "primary": "#001125", "error": "#ba1a1a", "surface-variant": "#d3e4fe", "tertiary": "#00140c", "surface-dim": "#cbdbf5", "secondary-fixed": "#cfe4ff" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-xxs": "0.125rem", "space-sm": "0.5rem", "margin-compact": "1rem", "gutter": "1rem", "space-xl": "1.5rem", "space-xs": "0.25rem", "gutter-compact": "0.5rem", "space-lg": "1rem", "space-2xl": "2rem", "margin": "1.5rem", "space-md": "0.75rem" }, fontFamily: { "label-md": ["Inter"], "body-sm": ["Inter"], "display-lg": ["Inter"], "code-sm": ["JetBrains Mono"], "title-md": ["Inter"], "code-md": ["JetBrains Mono"], "headline-sm": ["Inter"], "headline-lg": ["Inter"], "headline-md": ["Inter"], "body-md": ["Inter"], "body-lg": ["Inter"], "label-sm": ["Inter"] }, fontSize: { "label-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500" }], "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }], "display-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "code-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0em", "fontWeight": "500" }], "title-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "600" }], "code-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "500" }], "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "600" }], "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }], "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }], "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "600" }] } } } }</script><style>@layer base{html,body{width:100%;margin:0;padding:0;min-height:100vh;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-14 px-gutter flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><img alt="LabStock Logo" class="h-8 w-auto object-contain flex-shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1WA2PwUHnv-gOy1sGtDd2P8L_HQ29mbi3sjPSUjmMJTNrnYQrNhcwJVjIEQV0h-3BHwtnEL25TrG9Og516achgZaEZPlnKOw3KbmseEom3yjlC5pmHtNWLgB5VsyRYuXgt-SbRWu9OB9vMQnbwL7Tt3g8Ch89Yq8gmxe3z9KJMyjiF2YXD2SrsAk9b_PBetca9r8HovwsGXIHOgL_xWKgDZW-Gh0XUtPp8KMbVMTs6u96BuOaLQlqoLKEQ"/><div class="flex flex-col min-w-0"><span class="font-title-md text-title-md text-on-surface font-semibold tracking-tight truncate leading-none">LabStock</span><span class="font-label-sm text-label-sm text-on-surface-variant truncate leading-none mt-space-xxs">Inventory</span></div></div><div class="flex items-center gap-space-xs flex-shrink-0"><button aria-label="Notifications" class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span></button><button aria-label="User Menu" class="w-11 h-11 flex items-center justify-center rounded-lg hover:bg-surface-container transition-colors" type="button"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></button></div></div></header><main class="flex flex-col relative w-full pt-14 pb-20 bg-surface flex-grow"><div class="flex flex-col w-full">
+<!-- Interactive View Container -->
+<div class="flex flex-col w-full px-gutter py-space-md gap-space-lg">
+<!-- Report Header & Primary Export Actions -->
+<div class="flex flex-col gap-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs text-on-tertiary-container">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Ledger Verified</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight mt-space-xxs">Reports &amp; Analytics</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xxs">Operational metrics, consumption trends, and audit exports.</p>
+</div>
+<!-- Action Chips / Export Trigger -->
+<div class="flex items-center justify-between gap-space-sm pt-space-xs">
+<button class="flex items-center gap-space-xs px-space-md py-space-xs bg-surface-container rounded-lg text-on-surface hover:bg-surface-variant transition-colors shadow-sm" id="dateRangeBtn" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">calendar_today</span>
+<span class="font-label-md text-label-md font-medium">Last 30 Days</span>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">arrow_drop_down</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-space-xs bg-surface-container-low text-primary-container rounded-lg shadow-sm hover:bg-surface-container transition-all active:scale-[0.98]" id="quickCsvBtn" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">file_download</span>
+<span class="font-title-md text-title-md">Export CSV</span>
+</button>
+</div>
+</div>
+<!-- Category Tabs (Horizontal Scrollable) -->
+<div class="relative -mx-gutter px-gutter overflow-x-auto no-scrollbar">
+<div class="flex items-center gap-space-xs min-w-max pb-space-xxs" id="categoryTabGroup">
+<button class="tab-btn active px-space-md py-space-xs rounded-full bg-primary text-on-primary font-title-md text-title-md transition-all shadow-sm flex items-center gap-space-xs" data-target="overview" type="button">
+<span class="material-symbols-outlined text-[16px]">pie_chart</span>
+<span>Stock Overview</span>
+</button>
+<button class="tab-btn px-space-md py-space-xs rounded-full bg-surface-container text-on-surface-variant font-title-md text-title-md transition-all hover:text-on-surface flex items-center gap-space-xs" data-target="consumption" type="button">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>Consumption</span>
+</button>
+<button class="tab-btn px-space-md py-space-xs rounded-full bg-surface-container text-on-surface-variant font-title-md text-title-md transition-all hover:text-on-surface flex items-center gap-space-xs" data-target="movements" type="button">
+<span class="material-symbols-outlined text-[16px]">swap_horiz</span>
+<span>Movements</span>
+</button>
+<button class="tab-btn px-space-md py-space-xs rounded-full bg-surface-container text-on-surface-variant font-title-md text-title-md transition-all hover:text-on-surface flex items-center gap-space-xs" data-target="damage" type="button">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+<span>Damage Log</span>
+</button>
+<button class="tab-btn px-space-md py-space-xs rounded-full bg-surface-container text-on-surface-variant font-title-md text-title-md transition-all hover:text-on-surface flex items-center gap-space-xs" data-target="replenish" type="button">
+<span class="material-symbols-outlined text-[16px]">local_shipping</span>
+<span>Replenishment</span>
+</button>
+</div>
+</div>
+<!-- Shared Filter Panel Pill Drawer -->
+<div class="flex flex-col bg-surface-container-low rounded-xl p-space-md shadow-sm gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs text-on-surface font-title-md text-title-md">
+<span class="material-symbols-outlined text-[18px] text-secondary">tune</span>
+<span>Active Filter Parameters</span>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant">LEDGER-SYNCED</span>
+</div>
+<div class="grid grid-cols-1 gap-space-xs">
+<div class="flex items-center justify-between bg-surface-container-lowest px-space-md py-space-xs rounded-lg shadow-sm">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Category</span>
+<span class="font-title-md text-title-md text-on-surface">All Categories</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[20px]">expand_more</span>
+</div>
+<div class="grid grid-cols-2 gap-space-xs">
+<div class="flex items-center justify-between bg-surface-container-lowest px-space-md py-space-xs rounded-lg shadow-sm">
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Location</span>
+<span class="font-title-md text-title-md text-on-surface truncate">All Benches</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0">expand_more</span>
+</div>
+<div class="flex items-center justify-between bg-surface-container-lowest px-space-md py-space-xs rounded-lg shadow-sm">
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Movement</span>
+<span class="font-title-md text-title-md text-on-surface truncate">All Events</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0">expand_more</span>
+</div>
+</div>
+</div>
+<button class="w-full mt-space-xxs py-space-xs px-space-md bg-primary-container text-on-primary rounded-lg font-title-md text-title-md hover:bg-primary transition-all flex items-center justify-center gap-space-xs shadow-sm" id="applyFiltersBtn" type="button">
+<span class="material-symbols-outlined text-[18px]">filter_alt</span>
+<span>Apply Filters</span>
+</button>
+</div>
+<!-- Section A: Stock Availability Overview Breakdown -->
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">inventory</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Stock Availability Breakdown</h2>
+</div>
+<span class="font-code-sm text-code-sm px-space-xs py-space-xxs rounded bg-surface-container text-on-secondary-container">1,428 SKUs</span>
+</div>
+<!-- Health Metric Cards (Single-column / Grid-pairs) -->
+<div class="grid grid-cols-3 gap-space-xs">
+<!-- In-Stock -->
+<div class="flex flex-col p-space-sm rounded-xl bg-surface-container-lowest shadow-sm">
+<div class="flex items-center gap-space-xxs text-on-tertiary-container">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span class="font-label-sm text-label-sm">In-Stock</span>
+</div>
+<span class="font-display-lg text-display-lg text-on-surface tracking-tight mt-space-xxs">98.3<span class="text-body-sm font-label-md">%</span></span>
+<span class="font-code-sm text-code-sm text-on-surface-variant mt-space-xxs">1,418 items</span>
+</div>
+<!-- Low-Stock Alert -->
+<div class="flex flex-col p-space-sm rounded-xl bg-surface-container-lowest shadow-sm">
+<div class="flex items-center gap-space-xxs text-secondary">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+<span class="font-label-sm text-label-sm">Low-Stock</span>
+</div>
+<span class="font-display-lg text-display-lg text-on-surface tracking-tight mt-space-xxs">0.5<span class="text-body-sm font-label-md">%</span></span>
+<span class="font-code-sm text-code-sm text-on-surface-variant mt-space-xxs">7 items</span>
+</div>
+<!-- Depleted -->
+<div class="flex flex-col p-space-sm rounded-xl bg-surface-container-lowest shadow-sm">
+<div class="flex items-center gap-space-xxs text-error">
+<span class="material-symbols-outlined text-[16px]">error</span>
+<span class="font-label-sm text-label-sm">Depleted</span>
+</div>
+<span class="font-display-lg text-display-lg text-on-surface tracking-tight mt-space-xxs">0.2<span class="text-body-sm font-label-md">%</span></span>
+<span class="font-code-sm text-code-sm text-on-surface-variant mt-space-xxs">3 items</span>
+</div>
+</div>
+<!-- Visual Multi-segment Distribution Bar Card -->
+<div class="flex flex-col bg-surface-container-lowest p-space-md rounded-xl shadow-sm gap-space-sm">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>AGGREGATE INVENTORY HEALTH</span>
+<span class="font-code-sm text-code-sm text-on-tertiary-container font-semibold">99.5% Operational</span>
+</div>
+<!-- Multi-segment Track -->
+<div class="w-full h-4 bg-surface-container rounded-full overflow-hidden flex">
+<div class="h-full bg-on-tertiary-container transition-all duration-500" style="width: 98.3%;" title="In Stock: 98.3%"></div>
+<div class="h-full bg-secondary-container transition-all duration-500" style="width: 1.2%;" title="Low Stock: 0.5%"></div>
+<div class="h-full bg-error transition-all duration-500" style="width: 0.5%;" title="Depleted: 0.2%"></div>
+</div>
+<!-- Numerical Legend -->
+<div class="grid grid-cols-3 pt-space-xs text-center divide-x divide-transparent">
+<div class="flex items-center justify-center gap-space-xs">
+<div class="w-2.5 h-2.5 rounded-full bg-on-tertiary-container shrink-0"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">In Stock: <strong class="text-on-surface">98.3%</strong></span>
+</div>
+<div class="flex items-center justify-center gap-space-xs">
+<div class="w-2.5 h-2.5 rounded-full bg-secondary-container shrink-0"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Low: <strong class="text-on-surface">0.5%</strong></span>
+</div>
+<div class="flex items-center justify-center gap-space-xs">
+<div class="w-2.5 h-2.5 rounded-full bg-error shrink-0"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Zero: <strong class="text-on-surface">0.2%</strong></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section B: Top Consumed Items (Usage Ranking) -->
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">leaderboard</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Top Consumed Items</h2>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Gross Issues (30d)</span>
+</div>
+<div class="flex flex-col bg-surface-container-lowest p-space-md rounded-xl shadow-sm gap-space-md">
+<!-- Item 1: Soldering Wire 60/40 (100%) -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-start justify-between min-w-0">
+<div class="flex items-center gap-space-xs min-w-0">
+<span class="w-5 h-5 rounded-full bg-surface-container flex items-center justify-center font-code-sm text-code-sm text-on-surface shrink-0">1</span>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md text-on-surface truncate">Soldering Wire 60/40 100g</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">SKU-SLD-6040 · 18 checkouts</span>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0 pl-space-xs">
+<span class="font-title-md text-title-md text-on-surface font-semibold">145 rolls</span>
+<span class="font-label-sm text-label-sm text-on-tertiary-container">100% peak</span>
+</div>
+</div>
+<div class="w-full h-2.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 100%;"></div>
+</div>
+</div>
+<!-- Item 2: Resistor Kit (56%) -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-start justify-between min-w-0">
+<div class="flex items-center gap-space-xs min-w-0">
+<span class="w-5 h-5 rounded-full bg-surface-container flex items-center justify-center font-code-sm text-code-sm text-on-surface shrink-0">2</span>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md text-on-surface truncate">Resistor Kit 1/4W 600pc</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">SKU-RES-600P · 24 checkouts</span>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0 pl-space-xs">
+<span class="font-title-md text-title-md text-on-surface font-semibold">82 kits</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">56% of max</span>
+</div>
+</div>
+<div class="w-full h-2.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 56.5%;"></div>
+</div>
+</div>
+<!-- Item 3: Breadboard 830 Pt (33%) -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-start justify-between min-w-0">
+<div class="flex items-center gap-space-xs min-w-0">
+<span class="w-5 h-5 rounded-full bg-surface-container flex items-center justify-center font-code-sm text-code-sm text-on-surface shrink-0">3</span>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md text-on-surface truncate">Breadboard 830 Pt MB-102</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">SKU-BRD-830 · 31 checkouts</span>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0 pl-space-xs">
+<span class="font-title-md text-title-md text-on-surface font-semibold">48 units</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">33% of max</span>
+</div>
+</div>
+<div class="w-full h-2.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary-fixed-variant rounded-full" style="width: 33.1%;"></div>
+</div>
+</div>
+<!-- Item 4: DC Motor Driver L298N (23%) -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-start justify-between min-w-0">
+<div class="flex items-center gap-space-xs min-w-0">
+<span class="w-5 h-5 rounded-full bg-surface-container flex items-center justify-center font-code-sm text-code-sm text-on-surface shrink-0">4</span>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md text-on-surface truncate">DC Motor Driver L298N</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">SKU-MOT-298 · 12 checkouts</span>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0 pl-space-xs">
+<span class="font-title-md text-title-md text-on-surface font-semibold">34 units</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">23% of max</span>
+</div>
+</div>
+<div class="w-full h-2.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-outline rounded-full" style="width: 23.4%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section C: Operational Loss & Damage Audit -->
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-error text-[20px]">report_problem</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Operational Loss &amp; Damage</h2>
+</div>
+<span class="px-space-xs py-space-xxs rounded bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold">
+          4 units (0.01%)
+        </span>
+</div>
+<!-- Incident Log Stack -->
+<div class="flex flex-col gap-space-sm">
+<!-- Incident 1: STM32 Nucleo Board -->
+<div class="flex flex-col bg-surface-container-lowest p-space-md rounded-xl shadow-sm gap-space-xs">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md text-on-surface font-semibold truncate">STM32 Nucleo Board</span>
+<span class="font-code-sm text-code-sm text-secondary">TE-DEV-008 · Write-Off (1 Unit)</span>
+</div>
+<span class="font-label-sm text-label-sm px-space-xs py-space-xxs rounded bg-error-container text-on-error-container shrink-0">Oct 14</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant bg-surface-container-low p-space-xs rounded-lg mt-space-xxs">
+<span class="font-medium text-on-surface">Reason:</span> ESD Damage during Robotics bench load test.
+          </p>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm pt-space-xxs">
+<span class="flex items-center gap-space-xxs">
+<span class="material-symbols-outlined text-[16px]">badge</span>
+              Tech Sarah M.
+            </span>
+<span class="flex items-center gap-space-xxs">
+<span class="material-symbols-outlined text-[16px]">precision_manufacturing</span>
+              Robotics Bench
+            </span>
+</div>
+</div>
+<!-- Incident 2: 10k Potentiometer -->
+<div class="flex flex-col bg-surface-container-lowest p-space-md rounded-xl shadow-sm gap-space-xs">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md text-on-surface font-semibold truncate">10k Potentiometer (x3)</span>
+<span class="font-code-sm text-code-sm text-secondary">PS-POT-010 · Hardware Scrap</span>
+</div>
+<span class="font-label-sm text-label-sm px-space-xs py-space-xxs rounded bg-surface-container text-on-surface-variant shrink-0">Oct 11</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant bg-surface-container-low p-space-xs rounded-lg mt-space-xxs">
+<span class="font-medium text-on-surface">Reason:</span> Pins sheared during junior breadboard lab insertion.
+          </p>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm pt-space-xxs">
+<span class="flex items-center gap-space-xxs">
+<span class="material-symbols-outlined text-[16px]">school</span>
+              Student Bench 4
+            </span>
+<span class="flex items-center gap-space-xxs text-on-tertiary-container">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+              Logged &amp; Replaced
+            </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section D: Audit & Export Controls -->
+<div class="flex flex-col bg-surface-container-lowest p-space-md rounded-xl shadow-sm gap-space-md">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Regulatory Audit Export</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Export immutable compliance snapshots for ISO/IEC-17025 laboratory records.</span>
+</div>
+<!-- Primary Download Button with Feedback State -->
+<button class="w-full py-space-md px-space-lg bg-primary text-on-primary rounded-lg font-title-md text-title-md flex items-center justify-center gap-space-xs shadow-md hover:bg-primary-container active:scale-[0.98] transition-all" id="downloadFullAuditBtn" type="button">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span id="btnLabel">Download Full Audit Report (.csv)</span>
+</button>
+<!-- Security & Ledger Verification Pill -->
+<div class="flex items-start gap-space-xs p-space-sm bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-[18px] text-on-tertiary-container shrink-0 mt-0.5">security</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">FastAPI Verified Ledger Pipe</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant leading-relaxed mt-space-xxs">
+            Endpoint: <code class="font-semibold text-on-surface">/api/v1/reports/consumption</code>. Formula injection mitigated via CSV RFC 4180 sanitizer. Data validated against PostgreSQL WAL logs.
+          </span>
+</div>
+</div>
+</div>
+<!-- Subtle Lab Footer Metric Stamp -->
+<div class="flex items-center justify-center gap-space-sm py-space-sm opacity-70">
+<span class="font-code-sm text-code-sm text-on-surface-variant">HASH: 8F2A-94EC-CLINICAL</span>
+<span class="text-on-surface-variant font-code-sm text-code-sm">·</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">TIMESTAMP: 2023-10-18T14:32:00Z</span>
+</div>
+</div>
+<script>
+    // Tab Switching Interactions
+    const tabButtons = document.querySelectorAll('#categoryTabGroup .tab-btn');
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabButtons.forEach(t => {
+          t.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+          t.classList.add('bg-surface-container', 'text-on-surface-variant');
+        });
+        btn.classList.remove('bg-surface-container', 'text-on-surface-variant');
+        btn.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+      });
+    });
+
+    // Download Micro-Interaction State
+    const downloadBtn = document.getElementById('downloadFullAuditBtn');
+    const btnLabel = document.getElementById('btnLabel');
+    if (downloadBtn && btnLabel) {
+      downloadBtn.addEventListener('click', () => {
+        const originalText = btnLabel.textContent;
+        btnLabel.textContent = 'Generating Signed Stream...';
+        downloadBtn.classList.add('opacity-80');
+        setTimeout(() => {
+          btnLabel.textContent = 'Report Dispatched (.csv)';
+          setTimeout(() => {
+            btnLabel.textContent = originalText;
+            downloadBtn.classList.remove('opacity-80');
+          }, 2000);
+        }, 800);
+      });
+    }
+
+    // Quick CSV notification micro-feedback
+    const quickCsv = document.getElementById('quickCsvBtn');
+    if (quickCsv) {
+      quickCsv.addEventListener('click', () => {
+        quickCsv.classList.add('bg-surface-container-high');
+        setTimeout(() => {
+          quickCsv.classList.remove('bg-surface-container-high');
+        }, 300);
+      });
+    }
+
+    // Apply Filter Button Interaction
+    const filterBtn = document.getElementById('applyFiltersBtn');
+    if (filterBtn) {
+      filterBtn.addEventListener('click', () => {
+        const originalHtml = filterBtn.innerHTML;
+        filterBtn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">refresh</span><span>Refreshing Ledger...</span>';
+        setTimeout(() => {
+          filterBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">check</span><span>Filters Synced</span>';
+          setTimeout(() => {
+            filterBtn.innerHTML = originalHtml;
+          }, 1500);
+        }, 500);
+      });
+    }
+  </script>
+</div></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/80 backdrop-blur-xl shadow-[0_-1px_8px_rgba(0,0,0,0.04)]" data-active-classes="text-primary font-title-md"><div class="h-16 px-space-xs grid grid-cols-5 items-center"><a class="flex flex-col items-center justify-center h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[22px]">dashboard</span><span class="font-label-sm text-label-sm leading-tight mt-space-xxs">Dashboard</span></a><a class="flex flex-col items-center justify-center h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="inventory" href="#"><span class="material-symbols-outlined text-[22px]">inventory_2</span><span class="font-label-sm text-label-sm leading-tight mt-space-xxs">Inventory</span></a><a class="flex flex-col items-center justify-center h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="movements" href="#"><span class="material-symbols-outlined text-[22px]">swap_horiz</span><span class="font-label-sm text-label-sm leading-tight mt-space-xxs text-center truncate px-space-xxs">Movements</span></a><a class="flex flex-col items-center justify-center h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="replenishment" href="#"><span class="material-symbols-outlined text-[22px]">local_shipping</span><span class="font-label-sm text-label-sm leading-tight mt-space-xxs text-center truncate px-space-xxs">Replenish</span></a><a aria-current="page" class="flex flex-col items-center justify-center h-full min-h-[44px] transition-colors text-primary font-title-md" data-path="reports" href="#"><span class="material-symbols-outlined text-[22px]">monitoring</span><span class="font-label-sm text-label-sm leading-tight mt-space-xxs">Reports</span></a></div></nav></body></html>

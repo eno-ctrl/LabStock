@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#f8f9ff;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "surface-container-highest": "#d3e4fe", "inverse-surface": "#213145", "surface-container-high": "#dce9ff", "secondary-fixed": "#cfe4ff", "surface-tint": "#4f5f77", "tertiary-fixed": "#7ff9c7", "outline-variant": "#c4c6cd", "tertiary-container": "#002c1d", "on-error-container": "#93000a", "secondary-container": "#c5dfff", "inverse-on-surface": "#eaf1ff", "surface-container": "#e5eeff", "surface": "#f8f9ff", "on-primary-fixed": "#0a1c31", "on-primary-container": "#7d8da7", "on-surface": "#0b1c30", "on-error": "#ffffff", "on-primary": "#ffffff", "on-tertiary-fixed": "#002115", "on-background": "#0b1c30", "primary-fixed-dim": "#b7c8e3", "secondary-fixed-dim": "#afc9e8", "tertiary": "#00140c", "inverse-primary": "#b7c8e3", "tertiary-fixed-dim": "#61dcac", "primary-fixed": "#d3e4ff", "on-surface-variant": "#44474d", "on-secondary": "#ffffff", "primary-container": "#15263b", "outline": "#74777d", "on-tertiary-fixed-variant": "#005139", "primary": "#001125", "surface-bright": "#f8f9ff", "on-secondary-fixed": "#001d34", "secondary": "#47617b", "surface-container-low": "#eff4ff", "background": "#f8f9ff", "error": "#ba1a1a", "on-primary-fixed-variant": "#37485e", "surface-variant": "#d3e4fe", "surface-container-lowest": "#ffffff", "error-container": "#ffdad6", "on-secondary-fixed-variant": "#2f4962", "on-secondary-container": "#4a637e", "surface-dim": "#cbdbf5", "on-tertiary-container": "#09a075", "on-tertiary": "#ffffff" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-xxs": "0.125rem", "space-lg": "1rem", "margin": "1.5rem", "space-xs": "0.25rem", "gutter-compact": "0.5rem", "gutter": "1rem", "margin-compact": "1rem", "space-md": "0.75rem", "space-xl": "1.5rem", "space-2xl": "2rem", "space-sm": "0.5rem" }, fontFamily: { "body-lg": ["Inter"], "code-sm": ["JetBrains Mono"], "body-sm": ["Inter"], "headline-md": ["Inter"], "headline-sm": ["Inter"], "label-md": ["Inter"], "body-md": ["Inter"], "code-md": ["JetBrains Mono"], "display-lg": ["Inter"], "label-sm": ["Inter"], "headline-lg": ["Inter"], "title-md": ["Inter"] }, fontSize: { "body-lg": ["16px", { lineHeight: "24px", letterSpacing: "0em", fontWeight: "400" }], "code-sm": ["11px", { lineHeight: "14px", letterSpacing: "0em", fontWeight: "500" }], "body-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.01em", fontWeight: "400" }], "headline-md": ["20px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "600" }], "headline-sm": ["16px", { lineHeight: "24px", letterSpacing: "-0.005em", fontWeight: "600" }], "label-md": ["13px", { lineHeight: "18px", letterSpacing: "0.01em", fontWeight: "500" }], "body-md": ["14px", { lineHeight: "20px", letterSpacing: "0em", fontWeight: "400" }], "code-md": ["13px", { lineHeight: "18px", letterSpacing: "0em", fontWeight: "500" }], "display-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700" }], "label-sm": ["11px", { lineHeight: "16px", letterSpacing: "0.03em", fontWeight: "600" }], "headline-lg": ["24px", { lineHeight: "32px", letterSpacing: "-0.015em", fontWeight: "600" }], "title-md": ["14px", { lineHeight: "20px", letterSpacing: "0em", fontWeight: "600" }] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-lg bg-primary-container flex items-center justify-center text-on-primary"><span class="material-symbols-outlined text-[20px]">science</span></div><div class="flex flex-col"><span class="font-title-md text-title-md text-on-surface leading-tight tracking-tight">LabStock</span><span class="font-label-sm text-label-sm text-on-surface-variant leading-none">Replenish</span></div></div><div class="flex items-center gap-space-xs"><button aria-label="Notifications" class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-[22px]">notifications</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-space-xs"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full pb-8">
+<div class="px-margin pt-space-md pb-space-sm flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm">
+<span>Dashboard</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface font-semibold">Suppliers</span>
+</div>
+<div class="flex items-start justify-between gap-space-sm mt-space-xxs">
+<div class="flex flex-col">
+<h1 class="font-headline-md text-headline-md text-on-surface tracking-tight">Supplier Management</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Manage suppliers and their associated laboratory supplies.</p>
+</div>
+<div class="flex items-center gap-space-xs flex-shrink-0">
+<button aria-label="Refresh suppliers list" class="w-10 h-10 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface flex items-center justify-center transition-transform active:rotate-180 duration-300 shadow-sm" id="refresh-btn">
+<span class="material-symbols-outlined text-[20px]">refresh</span>
+</button>
+<button class="h-10 px-space-md rounded-lg bg-primary hover:bg-primary-container text-on-primary flex items-center gap-space-xs font-title-md text-title-md shadow-sm transition-all active:scale-95" id="toggle-add-btn">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>Add Supplier</span>
+</button>
+</div>
+</div>
+</div>
+<div class="px-margin py-space-sm">
+<div class="grid grid-cols-3 gap-space-xs">
+<div class="flex flex-col p-space-sm rounded-xl bg-surface-container-lowest shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Active Partners</span>
+<span class="material-symbols-outlined text-[16px] text-on-tertiary-container">verified</span>
+</div>
+<div class="mt-2 flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">18</span>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant truncate mt-1">Total Active</span>
+</div>
+<div class="flex flex-col p-space-sm rounded-xl bg-surface-container-lowest shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Catalog Linked</span>
+<span class="material-symbols-outlined text-[16px] text-secondary">inventory_2</span>
+</div>
+<div class="mt-2 flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">14</span>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant truncate mt-1">With Items</span>
+</div>
+<div class="flex flex-col p-space-sm rounded-xl bg-surface-container-lowest shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Pending POs</span>
+<span class="material-symbols-outlined text-[16px] text-error">pending_actions</span>
+</div>
+<div class="mt-2 flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg text-error font-bold tracking-tight">4</span>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant truncate mt-1">Open PRs</span>
+</div>
+</div>
+</div>
+<div class="px-margin py-space-xs hidden transition-all duration-300" id="quick-add-section">
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">domain_add</span>
+</div>
+<div>
+<h2 class="font-title-md text-title-md text-on-surface">Quick Add Supplier</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Direct write to inventory registry</p>
+</div>
+</div>
+<button class="w-8 h-8 rounded-lg bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-on-surface-variant" id="close-add-btn">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<form class="flex flex-col gap-space-sm mt-1" id="add-supplier-form" onsubmit="event.preventDefault();">
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface">Supplier Name <span class="text-error">*</span></label>
+<input class="h-10 px-space-sm rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md placeholder:text-outline-variant outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_rgba(9,160,117,0.3)] transition-all" placeholder="e.g. Bio-Rad Laboratories" required="" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-space-xs">
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface">Supplier Code</label>
+<input class="h-10 px-space-sm rounded-lg bg-surface-container-low text-on-surface font-code-sm text-code-sm placeholder:text-outline-variant outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_rgba(9,160,117,0.3)] transition-all uppercase" placeholder="SUP-BRD" type="text"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface">Contact Person</label>
+<input class="h-10 px-space-sm rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md placeholder:text-outline-variant outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_rgba(9,160,117,0.3)] transition-all" placeholder="Sales rep name" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-xs">
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface">Email <span class="text-error">*</span></label>
+<input class="h-10 px-space-sm rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md placeholder:text-outline-variant outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_rgba(9,160,117,0.3)] transition-all" placeholder="orders@domain.com" required="" type="email"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface">Phone</label>
+<input class="h-10 px-space-sm rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md placeholder:text-outline-variant outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_rgba(9,160,117,0.3)] transition-all" placeholder="+1 (800) 000-0000" type="tel"/>
+</div>
+</div>
+<div class="pt-space-xs flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-on-tertiary-container">check_circle</span>
+            Ready for sync
+          </span>
+<button class="h-9 px-space-lg rounded-lg bg-primary hover:bg-primary-container text-on-primary font-title-md text-title-md transition-all active:scale-95 shadow-sm" id="save-supplier-btn" type="submit">
+            Save Supplier
+          </button>
+</div>
+</form>
+</div>
+</div>
+<div class="px-margin py-space-sm flex flex-col gap-space-sm">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full h-11 pl-10 pr-4 rounded-xl bg-surface-container-lowest text-on-surface font-body-md text-body-md placeholder:text-on-surface-variant shadow-sm outline-none focus:shadow-[0_0_0_2px_rgba(9,160,117,0.35)] transition-all" id="search-input" placeholder="Search by supplier name, contact, email..." type="text"/>
+</div>
+<div class="flex items-center gap-space-xs overflow-x-auto no-scrollbar pb-1">
+<button class="status-filter active-filter h-8 px-space-md rounded-full bg-primary text-on-primary font-label-sm text-label-sm whitespace-nowrap shadow-sm transition-all" data-filter="all">
+        All Status (18)
+      </button>
+<button class="status-filter h-8 px-space-md rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm whitespace-nowrap transition-all" data-filter="active">
+        Active (16)
+      </button>
+<button class="status-filter h-8 px-space-md rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm whitespace-nowrap transition-all" data-filter="inactive">
+        Inactive (2)
+      </button>
+</div>
+</div>
+<div class="px-margin flex flex-col gap-space-sm" id="supplier-cards-container">
+<div class="supplier-card rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col gap-space-sm transition-all duration-200" data-search="digikey electronics david miller tech sales orders@digikey.com sup-dky" data-status="active">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary font-bold font-title-md flex-shrink-0">
+            DK
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md text-on-surface truncate">DigiKey Electronics</span>
+<div class="flex items-center gap-space-xs mt-0.5">
+<span class="font-code-sm text-code-sm text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded">SUP-DKY</span>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span>
+                Active
+              </span>
+</div>
+</div>
+</div>
+<button aria-label="Quick options" class="w-8 h-8 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-1.5">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm truncate">
+<span class="material-symbols-outlined text-[16px] text-secondary flex-shrink-0">person</span>
+<span class="truncate">David Miller (Tech Sales)</span>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm truncate">
+<span class="material-symbols-outlined text-[16px] text-secondary flex-shrink-0">call</span>
+<span class="truncate font-code-sm text-code-sm">+1 (800) 344-4539</span>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm truncate">
+<span class="material-symbols-outlined text-[16px] text-secondary flex-shrink-0">mail</span>
+<span class="truncate font-code-sm text-code-sm text-on-surface">orders@digikey.com</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-xs">
+<div class="flex items-center gap-space-xs p-space-xs rounded-lg bg-surface-container">
+<span class="material-symbols-outlined text-[18px] text-primary">category</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">482 Items</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Linked catalog</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs p-space-xs rounded-lg bg-surface-container-highest">
+<span class="material-symbols-outlined text-[18px] text-primary">shopping_bag</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">2 Active PRs</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">#104, #102</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-xs pt-1">
+<button class="flex-1 h-9 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>Details</span>
+</button>
+<button class="h-9 px-space-md rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+<span>Edit</span>
+</button>
+<button class="h-9 px-space-md rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px]">receipt_long</span>
+<span>View PRs</span>
+</button>
+</div>
+</div>
+<div class="supplier-card rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col gap-space-sm transition-all duration-200" data-search="mouser electronics sarah jenkins educational rep edu-sales@mouser.com sup-mou" data-status="active">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary font-bold font-title-md flex-shrink-0">
+            ME
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md text-on-surface truncate">Mouser Electronics</span>
+<div class="flex items-center gap-space-xs mt-0.5">
+<span class="font-code-sm text-code-sm text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded">SUP-MOU</span>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span>
+                Active
+              </span>
+</div>
+</div>
+</div>
+<button aria-label="Quick options" class="w-8 h-8 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-1.5">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm truncate">
+<span class="material-symbols-outlined text-[16px] text-secondary flex-shrink-0">person</span>
+<span class="truncate">Sarah Jenkins (Educational Rep)</span>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm truncate">
+<span class="material-symbols-outlined text-[16px] text-secondary flex-shrink-0">call</span>
+<span class="truncate font-code-sm text-code-sm">+1 (800) 346-6873</span>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm truncate">
+<span class="material-symbols-outlined text-[16px] text-secondary flex-shrink-0">mail</span>
+<span class="truncate font-code-sm text-code-sm text-on-surface">edu-sales@mouser.com</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-xs">
+<div class="flex items-center gap-space-xs p-space-xs rounded-lg bg-surface-container">
+<span class="material-symbols-outlined text-[18px] text-primary">category</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">315 Items</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Linked catalog</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs p-space-xs rounded-lg bg-surface-container-highest">
+<span class="material-symbols-outlined text-[18px] text-primary">shopping_bag</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">1 Active PR</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">#103</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-xs pt-1">
+<button class="flex-1 h-9 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>Details</span>
+</button>
+<button class="h-9 px-space-md rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+<span>Edit</span>
+</button>
+<button class="h-9 px-space-md rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px]">receipt_long</span>
+<span>View PRs</span>
+</button>
+</div>
+</div>
+<div class="supplier-card rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col gap-space-sm transition-all duration-200" data-search="adafruit industries support desk support@adafruit.com sup-ada" data-status="active">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary font-bold font-title-md flex-shrink-0">
+            AF
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md text-on-surface truncate">Adafruit Industries</span>
+<div class="flex items-center gap-space-xs mt-0.5">
+<span class="font-code-sm text-code-sm text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded">SUP-ADA</span>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span>
+                Active
+              </span>
+</div>
+</div>
+</div>
+<button aria-label="Quick options" class="w-8 h-8 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-1.5">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm truncate">
+<span class="material-symbols-outlined text-[16px] text-secondary flex-shrink-0">person</span>
+<span class="truncate">Support Desk</span>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm truncate">
+<span class="material-symbols-outlined text-[16px] text-secondary flex-shrink-0">call</span>
+<span class="truncate font-code-sm text-code-sm">+1 (212) 675-0725</span>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm truncate">
+<span class="material-symbols-outlined text-[16px] text-secondary flex-shrink-0">mail</span>
+<span class="truncate font-code-sm text-code-sm text-on-surface">support@adafruit.com</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-xs">
+<div class="flex items-center gap-space-xs p-space-xs rounded-lg bg-surface-container">
+<span class="material-symbols-outlined text-[18px] text-primary">category</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">94 Items</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Linked catalog</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs p-space-xs rounded-lg bg-surface-container-highest">
+<span class="material-symbols-outlined text-[18px] text-primary">shopping_bag</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">1 Active PR</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">#101</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-xs pt-1">
+<button class="flex-1 h-9 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>Details</span>
+</button>
+<button class="h-9 px-space-md rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+<span>Edit</span>
+</button>
+<button class="h-9 px-space-md rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px]">receipt_long</span>
+<span>View PRs</span>
+</button>
+</div>
+</div>
+<div class="supplier-card rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col gap-space-sm opacity-90 transition-all duration-200" data-search="sparkfun electronics support education cservice@sparkfun.com sup-sfn" data-status="inactive">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface-variant font-bold font-title-md flex-shrink-0">
+            SF
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md text-on-surface truncate">SparkFun Electronics</span>
+<div class="flex items-center gap-space-xs mt-0.5">
+<span class="font-code-sm text-code-sm text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded">SUP-SFN</span>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                Inactive
+              </span>
+</div>
+</div>
+</div>
+<button aria-label="Quick options" class="w-8 h-8 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-1.5">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm truncate">
+<span class="material-symbols-outlined text-[16px] text-secondary flex-shrink-0">person</span>
+<span class="truncate">Support / Education</span>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm truncate">
+<span class="material-symbols-outlined text-[16px] text-secondary flex-shrink-0">mail</span>
+<span class="truncate font-code-sm text-code-sm text-on-surface">cservice@sparkfun.com</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-xs">
+<div class="flex items-center gap-space-xs p-space-xs rounded-lg bg-surface-container">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">category</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">42 Items</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Linked catalog</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs p-space-xs rounded-lg bg-surface-container">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">shopping_bag</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">0 Open PRs</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">No pending PO</span>
+</div>
+</div>
+</div>
+<div class="p-space-xs rounded-lg bg-surface-container flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant flex-shrink-0 mt-0.5">info</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-tight">
+          Inactive • Cannot be selected for new PRs. Historical records preserved.
+        </p>
+</div>
+<div class="flex items-center gap-space-xs pt-1">
+<button class="flex-1 h-9 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>Details</span>
+</button>
+<button class="flex-1 h-9 rounded-lg bg-surface-container hover:bg-secondary-container text-on-surface font-label-md text-label-md transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-on-tertiary-container">play_arrow</span>
+<span>Reactivate</span>
+</button>
+</div>
+</div>
+</div>
+<div class="px-margin py-8 hidden flex-col items-center justify-center text-center" id="empty-state">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant mb-space-sm">
+<span class="material-symbols-outlined text-[32px]">manage_search</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">No suppliers found</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 max-w-[260px]">Try adjusting your search query or clear the active status filter.</p>
+<button class="mt-space-md h-9 px-space-md rounded-lg bg-primary text-on-primary font-label-md text-label-md" id="reset-filter-btn">
+      Reset Search
+    </button>
+</div>
+<div class="px-margin pt-space-lg">
+<div class="flex items-center justify-center gap-space-xs py-2 px-space-sm rounded-lg bg-surface-container-low text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span>
+<span class="font-code-sm text-code-sm">FastAPI /api/v1/suppliers • SQLAlchemy synced</span>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    const toggleBtn = document.getElementById('toggle-add-btn');
+    const closeBtn = document.getElementById('close-add-btn');
+    const addSection = document.getElementById('quick-add-section');
+    const searchInput = document.getElementById('search-input');
+    const filterButtons = document.querySelectorAll('.status-filter');
+    const cards = document.querySelectorAll('.supplier-card');
+    const emptyState = document.getElementById('empty-state');
+    const resetFilterBtn = document.getElementById('reset-filter-btn');
+    const refreshBtn = document.getElementById('refresh-btn');
+    const addForm = document.getElementById('add-supplier-form');
+
+    let currentStatus = 'all';
+    let currentSearch = '';
+
+    function filterCards() {
+      let visibleCount = 0;
+      cards.forEach(card => {
+        const cardStatus = card.getAttribute('data-status');
+        const cardSearch = card.getAttribute('data-search') || '';
+
+        const matchesStatus = (currentStatus === 'all') || (cardStatus === currentStatus);
+        const matchesSearch = !currentSearch || cardSearch.toLowerCase().includes(currentSearch.toLowerCase());
+
+        if (matchesStatus && matchesSearch) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      if (visibleCount === 0) {
+        emptyState.classList.remove('hidden');
+        emptyState.classList.add('flex');
+      } else {
+        emptyState.classList.add('hidden');
+        emptyState.classList.remove('flex');
+      }
+    }
+
+    if (toggleBtn && addSection) {
+      toggleBtn.addEventListener('click', () => {
+        addSection.classList.toggle('hidden');
+        if (!addSection.classList.contains('hidden')) {
+          addSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      });
+    }
+
+    if (closeBtn && addSection) {
+      closeBtn.addEventListener('click', () => {
+        addSection.classList.add('hidden');
+      });
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        currentSearch = e.target.value.trim();
+        filterCards();
+      });
+    }
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => {
+          b.classList.remove('bg-primary', 'text-on-primary', 'active-filter', 'shadow-sm');
+          b.classList.add('bg-surface-container', 'text-on-surface');
+        });
+        btn.classList.add('bg-primary', 'text-on-primary', 'active-filter', 'shadow-sm');
+        btn.classList.remove('bg-surface-container', 'text-on-surface');
+
+        currentStatus = btn.getAttribute('data-filter') || 'all';
+        filterCards();
+      });
+    });
+
+    if (resetFilterBtn) {
+      resetFilterBtn.addEventListener('click', () => {
+        if (searchInput) searchInput.value = '';
+        currentSearch = '';
+        const allBtn = document.querySelector('.status-filter[data-filter="all"]');
+        if (allBtn) allBtn.click();
+      });
+    }
+
+    if (refreshBtn) {
+      refreshBtn.addEventListener('click', () => {
+        refreshBtn.classList.add('opacity-50');
+        setTimeout(() => {
+          refreshBtn.classList.remove('opacity-50');
+        }, 300);
+      });
+    }
+
+    if (addForm) {
+      addForm.addEventListener('submit', () => {
+        if (addSection) addSection.classList.add('hidden');
+        addForm.reset();
+      });
+    }
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(21,38,59,0.05)]" data-active-classes="text-primary font-semibold"><div class="flex items-center justify-around h-16 px-space-xs"><a class="flex flex-col items-center justify-center min-w-[56px] h-12 text-on-surface-variant hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[22px]">dashboard</span><span class="font-label-sm text-label-sm mt-space-xxs">Dashboard</span></a><a class="flex flex-col items-center justify-center min-w-[56px] h-12 text-on-surface-variant hover:text-on-surface transition-colors" data-path="inventory" href="#"><span class="material-symbols-outlined text-[22px]">inventory_2</span><span class="font-label-sm text-label-sm mt-space-xxs">Inventory</span></a><a class="flex flex-col items-center justify-center min-w-[56px] h-12 text-on-surface-variant hover:text-on-surface transition-colors" data-path="movements" href="#"><span class="material-symbols-outlined text-[22px]">swap_horiz</span><span class="font-label-sm text-label-sm mt-space-xxs">Movements</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[56px] h-12 transition-colors text-primary font-semibold" data-path="replenish" href="#"><span class="material-symbols-outlined text-[22px]">shopping_cart</span><span class="font-label-sm text-label-sm mt-space-xxs">Replenish</span></a><a class="flex flex-col items-center justify-center min-w-[56px] h-12 text-on-surface-variant hover:text-on-surface transition-colors" data-path="reports" href="#"><span class="material-symbols-outlined text-[22px]">bar_chart</span><span class="font-label-sm text-label-sm mt-space-xxs">Reports</span></a></div></nav></body></html>
